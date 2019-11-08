@@ -1,0 +1,2 @@
+ArcGIS GeoEvent Server提供了Input Connecter组件，每个GeoEvent至少包括一个Input Connecter，用于配置特定的数据源以获取物联网实时数据。
+ArcGIS GeoEvent Server Partner Gallery已经提供了一些Esri合作伙伴的Input Connecter，其中包括很多的物联网企业，如提供无线通信的Verizon，车辆通信技术提供商Geotab，提供城市资产管理的Cityworks等。
