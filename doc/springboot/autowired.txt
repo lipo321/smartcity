@@ -1,0 +1,1 @@
+所有用注解注入的Bean都是Spring自己管理自动装配，或者配置文件能扫描到的，或者手动申明的bean,这样bean内部访问的bean不需要手动维护就可以访问，也就是说你想用一个bean,不必自己维护，让Spring自己维护也就是使用@Autowired这个注解，他的父类容器必须是一个bean,这个bean最好是SPring自己维护的，例如@Controller、@service、@resource、@Component等, 而Mapper是属于Mybatis配置文件扫描的DAO层Bean,Utils一般是静态工具类，是属于辅助的，当然你可以使用注解让他变成一个Bean,不过一般不这样干吧
