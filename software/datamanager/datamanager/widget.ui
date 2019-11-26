@@ -209,7 +209,7 @@
         <string>品牌：</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="sellTypeComboBox">
+      <widget class="QComboBox" name="geomTypeComboBox">
        <property name="geometry">
         <rect>
          <x>63</x>
@@ -361,8 +361,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>98</width>
-        <height>28</height>
+        <width>317</width>
+        <height>278</height>
        </rect>
       </property>
       <attribute name="label">

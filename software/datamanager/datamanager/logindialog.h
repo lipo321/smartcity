@@ -21,6 +21,9 @@ private slots:
     void on_quitBtn_clicked();
 
 private:
+    void setBackgroundImage(QString path);
+
+private:
     Ui::LoginDialog *ui;
 };
 

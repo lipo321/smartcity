@@ -14,29 +14,29 @@ Widget::Widget(QWidget *parent) :
     ui->stackedWidget->setCurrentIndex(0);
 
     QSqlQueryModel *typeModel = new QSqlQueryModel(this);
-    typeModel->setQuery("select * from type");
-    ui->sellTypeComboBox->setModel(typeModel);
+    typeModel->setQuery("select name from type");
+    ui->geomTypeComboBox->setModel(typeModel);
 
-    //QSplitter *splitter = new QSplitter(ui->managePage);
-    //splitter->resize(700, 360);
-    //splitter->move(0, 50);
+    QSplitter *splitter = new QSplitter(ui->managePage);
+    splitter->resize(700, 360);
+    splitter->move(0, 50);
 
-    //splitter->addWidget(ui->toolBox);
-    //splitter->addWidget(ui->dailyList);
-    //splitter->setStretchFactor(0, 1);
-    //splitter->setStretchFactor(1, 1);
+    splitter->addWidget(ui->toolBox);
+    splitter->addWidget(ui->dailyList);
+    splitter->setStretchFactor(0, 1);
+    splitter->setStretchFactor(1, 1);
 
-    //on_sellCancelBtn_clicked();
-    //on_goodsCancelBtn_clicked();
-    //on_newCancelBtn_clicked();
+    on_sellCancelBtn_clicked();
+    on_goodsCancelBtn_clicked();
+    on_newCancelBtn_clicked();
 
-    //showDailyList();
+    showDailyList();
 
-    //ui->typeComboBox->setModel(typeModel);
-    //ui->goodsTypeComboBox->setModel(typeModel);
-    //ui->newTypeComboBox->setModel(typeModel);
+    ui->typeComboBox->setModel(typeModel);
+    ui->goodsTypeComboBox->setModel(typeModel);
+    ui->newTypeComboBox->setModel(typeModel);
 
-    //createChartModelView();
+    createChartModelView();
 
 }
 
@@ -98,14 +98,14 @@ void Widget::on_sellBrandComboBox_currentIndexChanged(QString brand)
 
     QSqlQuery query;
     query.exec(QString("select price from brand where name='%1' and type='%2'")
-               .arg(brand).arg(ui->sellTypeComboBox->currentText()));
+               .arg(brand).arg(ui->geomTypeComboBox->currentText()));
     query.next();
     ui->sellPriceLineEdit->setEnabled(true);
     ui->sellPriceLineEdit->setReadOnly(true);
     ui->sellPriceLineEdit->setText(query.value(0).toString());
 
     query.exec(QString("select last from brand where name='%1' and type='%2'")
-               .arg(brand).arg(ui->sellTypeComboBox->currentText()));
+               .arg(brand).arg(ui->geomTypeComboBox->currentText()));
     query.next();
     int num = query.value(0).toInt();
 
@@ -210,7 +210,7 @@ void Widget::on_newNumSpinBox_valueChanged(int value)
 // 出售商品的取消按钮
 void Widget::on_sellCancelBtn_clicked()
 {
-    ui->sellTypeComboBox->setCurrentIndex(0);
+    ui->geomTypeComboBox->setCurrentIndex(0);
     ui->sellBrandComboBox->clear();
     ui->sellBrandComboBox->setEnabled(false);
     ui->sellPriceLineEdit->clear();
@@ -260,7 +260,7 @@ void Widget::on_newCancelBtn_clicked()
 // 出售商品的确定按钮
 void Widget::on_sellOkBtn_clicked()
 {
-    QString type = ui->sellTypeComboBox->currentText();
+    QString type = ui->geomTypeComboBox->currentText();
     QString name = ui->sellBrandComboBox->currentText();
     int value = ui->sellNumSpinBox->value();
     // cellNumSpinBox的最大值就是以前的剩余量
@@ -336,7 +336,7 @@ void Widget::on_newOkBtn_clicked()
     qint16 num = ui->newNumSpinBox->value();
 
     QSqlQuery query;
-    query.exec("select id from brand");
+    query.exec("select name from metadata");
     query.last();
     qreal temp = query.value(0).toInt() + 1;
 
@@ -352,8 +352,10 @@ void Widget::on_newOkBtn_clicked()
 
     // 事务操作
     QSqlDatabase::database().transaction();
-    bool rtn = query.exec(QString("insert into brand values('%1', '%2', '%3', %4, %5, 0, %6)")
-                .arg(id).arg(brand).arg(type).arg(price).arg(num).arg(num));
+    bool rtn = query.exec(QString("insert into metadata values(%1, '%2',%3, '%4', '%5')")
+                .arg(6).arg(brand).arg(price).arg(brand).arg(brand));
+    QString hh =QString("insert into metadata values(%1, '%2',%3, '%4', '%5')")
+        .arg(6).arg(brand).arg(price).arg(brand).arg(brand);
     if (rtn) {
         QSqlDatabase::database().commit();
         QMessageBox::information(this, tr("提示"), tr("入库成功！"), QMessageBox::Ok);
@@ -453,7 +455,7 @@ void Widget::createNodes(QDomElement &date)
     QDomElement sum = doc.createElement(QString("金额"));
     QDomText text;
     text = doc.createTextNode(QString("%1")
-                              .arg(ui->sellTypeComboBox->currentText()));
+                              .arg(ui->geomTypeComboBox->currentText()));
     type.appendChild(text);
     text = doc.createTextNode(QString("%1")
                               .arg(ui->sellBrandComboBox->currentText()));
@@ -552,11 +554,12 @@ void Widget::createChartModelView()
 // 显示销售记录图表
 void Widget::showChart()
 {
+    int type = ui->typeComboBox->currentText().toInt();
     QSqlQuery query;
-    query.exec(QString("select name,sell from brand where type='%1'")
-               .arg(ui->typeComboBox->currentText()));
+    query.exec(QString("select name,des from brand where type=%1")
+               .arg(2));
 
-    chartModel->removeRows(0, chartModel->rowCount(QModelIndex()), QModelIndex());
+  //  chartModel->removeRows(0, chartModel->rowCount(QModelIndex()), QModelIndex());
 
     int row = 0;
 
