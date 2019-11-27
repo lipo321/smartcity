@@ -54,7 +54,7 @@ void Widget::on_geomTypeComboBox_currentIndexChanged(QString type)
     } else {
         ui->sellBrandComboBox->setEnabled(true);
         QSqlQueryModel *sellBrandModel = new QSqlQueryModel(this);
-        sellBrandModel->setQuery(QString("select name from metadata where type='%1'").arg(type));
+        sellBrandModel->setQuery(QString("select name from metadata where type=(select id from type where name='%1' )").arg(type));
         ui->sellBrandComboBox->setModel(sellBrandModel);
         ui->sellCancelBtn->setEnabled(true);
     }
@@ -97,14 +97,24 @@ void Widget::on_sellBrandComboBox_currentIndexChanged(QString brand)
     ui->sellOkBtn->setEnabled(false);
 
     QSqlQuery query;
-    query.exec(QString("select price from brand where name='%1' and type='%2'")
+    query.exec(QString("select geom_wkt from metadata where name='%1' and type=(select id from type where name='%2')")
                .arg(brand).arg(ui->geomTypeComboBox->currentText()));
     query.next();
     ui->sellPriceLineEdit->setEnabled(true);
     ui->sellPriceLineEdit->setReadOnly(true);
     ui->sellPriceLineEdit->setText(query.value(0).toString());
 
-    query.exec(QString("select last from brand where name='%1' and type='%2'")
+   
+    query.exec(QString("select des from metadata where name='%1' and type=(select id from type where name='%2')")
+        .arg(brand).arg(ui->geomTypeComboBox->currentText()));
+    query.next();
+    ui->sellSumLineEdit->setEnabled(true);
+    ui->sellSumLineEdit->setReadOnly(true);
+    QString mm = query.value(0).toString();
+    ui->sellSumLineEdit->setText(query.value(0).toString());
+    
+
+    query.exec(QString("select num from metadata where name='%1' and type=(select id from type where name='%2')")
                .arg(brand).arg(ui->geomTypeComboBox->currentText()));
     query.next();
     int num = query.value(0).toInt();
@@ -162,14 +172,14 @@ void Widget::on_newBrandLineEdit_textChanged(QString str)
 void Widget::on_sellNumSpinBox_valueChanged(int value)
 {
     if (value == 0) {
-        ui->sellSumLineEdit->clear();
-        ui->sellSumLineEdit->setEnabled(false);
+       // ui->sellSumLineEdit->clear();
+       // ui->sellSumLineEdit->setEnabled(false);
         ui->sellOkBtn->setEnabled(false);
     } else {
-        ui->sellSumLineEdit->setEnabled(true);
-        ui->sellSumLineEdit->setReadOnly(true);
+       // ui->sellSumLineEdit->setEnabled(true);
+        //ui->sellSumLineEdit->setReadOnly(true);
         qreal sum = value * ui->sellPriceLineEdit->text().toInt();
-        ui->sellSumLineEdit->setText(QString::number(sum));
+        //ui->sellSumLineEdit->setText(QString::number(sum));
         ui->sellOkBtn->setEnabled(true);
     }
 }
@@ -594,13 +604,13 @@ void Widget::on_updateBtn_clicked()
         showChart();
 }
 
-// 商品管理按钮
+// 地理数据管理按钮
 void Widget::on_manageBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-// 销售统计按钮
+// 地理数据销售统计按钮
 void Widget::on_chartBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
