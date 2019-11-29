@@ -69,7 +69,7 @@ void Widget::on_goodsTypeComboBox_currentIndexChanged(QString type)
     } else {
         ui->goodsBrandComboBox->setEnabled(true);
         QSqlQueryModel *goodBrandModel = new QSqlQueryModel(this);
-        goodBrandModel->setQuery(QString("select name from brand where type='%1'").arg(type));
+        goodBrandModel->setQuery(QString("select name from metadata where type=(select id from type where name='%1')").arg(type));
         ui->goodsBrandComboBox->setModel(goodBrandModel);
         ui->goodsCancelBtn->setEnabled(true);
     }
@@ -139,7 +139,7 @@ void Widget::on_goodsBrandComboBox_currentIndexChanged(QString brand)
     ui->goodsOkBtn->setEnabled(false);
 
     QSqlQuery query;
-    query.exec(QString("select price from brand where name='%1' and type='%2'")
+    query.exec(QString("select geom_wkt from metadata where name='%1' and type=(select id from type where name='%2')")
                .arg(brand).arg(ui->goodsTypeComboBox->currentText()));
     query.next();
     ui->goodsPriceLineEdit->setEnabled(true);
@@ -279,7 +279,7 @@ void Widget::on_sellOkBtn_clicked()
     QSqlQuery query;
 
     // 获取以前的销售量
-    query.exec(QString("select sell from brand where name='%1' and type='%2'")
+    query.exec(QString("select allselled from metadata where name='%1' and id = (select id from type where name ='%2')")
                .arg(name).arg(type));
     query.next();
     int sell = query.value(0).toInt() + value;
@@ -287,7 +287,7 @@ void Widget::on_sellOkBtn_clicked()
     // 事务操作
     QSqlDatabase::database().transaction();
     bool rtn = query.exec(
-                QString("update brand set sell=%1,last=%2 where name='%3' and type='%4'")
+                QString("update metadata set allselled=%1,num=%2 where name='%3'and id = (select id from type where name ='%4')")
                 .arg(sell).arg(last).arg(name).arg(type));
 
     if (rtn) {
@@ -346,26 +346,17 @@ void Widget::on_newOkBtn_clicked()
     qint16 num = ui->newNumSpinBox->value();
 
     QSqlQuery query;
-    query.exec("select name from metadata");
+    query.exec("select id from metadata");
     query.last();
-    qreal temp = query.value(0).toInt() + 1;
-
-    QString id;
-    if (temp < 10) {
-        id = "0" + QString::number(temp);
-    } else {
-        id = QString::number(temp);
-    }
+    int id = query.value(0).toInt() + 1;
 
     qDebug() << "hello" <<id << type << brand << price << num;
 
 
     // 事务操作
     QSqlDatabase::database().transaction();
-    bool rtn = query.exec(QString("insert into metadata values(%1, '%2',%3, '%4', '%5')")
-                .arg(6).arg(brand).arg(price).arg(brand).arg(brand));
-    QString hh =QString("insert into metadata values(%1, '%2',%3, '%4', '%5')")
-        .arg(6).arg(brand).arg(price).arg(brand).arg(brand);
+    bool rtn = query.exec(QString("insert into metadata values(%1, '%2',%3, '%4', '%5',%6,%7)")
+                .arg(id).arg(brand).arg(price).arg(brand).arg(brand).arg(num).arg(int(0)));
     if (rtn) {
         QSqlDatabase::database().commit();
         QMessageBox::information(this, tr("提示"), tr("入库成功！"), QMessageBox::Ok);
@@ -495,7 +486,7 @@ void Widget::showDailyList()
     if (docRead()) {
         QDomElement root = doc.documentElement();
         QString title = root.tagName();
-        QListWidgetItem *titleItem = new QListWidgetItem;
+        QListWidgetItem *titleItem = new QListWidgetItem; 
         titleItem->setText(QString("-----%1-----").arg(title));
         titleItem->setTextAlignment(Qt::AlignCenter);
         ui->dailyList->addItem(titleItem);
@@ -631,10 +622,10 @@ void Widget::on_changePwdBtn_clicked()
                              QMessageBox::Ok);
     } else {
         QSqlQuery query;
-        query.exec("select pwd from password");
+        query.exec("select password from user");
         query.next();
         if (query.value(0).toString() == ui->oldPwdLineEdit->text()) {
-            bool temp = query.exec(QString("update password set pwd='%1' where pwd='%2'")
+            bool temp = query.exec(QString("update user set password='%1' where password='%2'")
                                    .arg(ui->newPwdLineEdit->text()).arg(ui->oldPwdLineEdit->text()));
             if (temp) {
                 QMessageBox::information(this, tr("提示"), tr("密码修改成功！"),

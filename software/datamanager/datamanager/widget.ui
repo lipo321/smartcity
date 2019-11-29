@@ -340,7 +340,7 @@
        </rect>
       </property>
       <attribute name="label">
-       <string>已有商品入库</string>
+       <string>已有地理数据入库</string>
       </attribute>
       <widget class="QLabel" name="label_2">
        <property name="geometry">
@@ -526,7 +526,7 @@
        </rect>
       </property>
       <attribute name="label">
-       <string>新商品入库</string>
+       <string>新地理数据入库</string>
       </attribute>
       <widget class="QSpinBox" name="newNumSpinBox">
        <property name="geometry">
