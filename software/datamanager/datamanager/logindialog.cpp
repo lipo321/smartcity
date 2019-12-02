@@ -11,7 +11,8 @@ LoginDialog::LoginDialog(QWidget *parent) :
     ui->setupUi(this);
 
     setFixedSize(400, 300);
-    setWindowTitle(tr("µÇÂ¼"));
+    setWindowTitle(tr("µÇÂ¼Ò³Ãæ"));
+    setBackgroundImage(QString::fromUtf8("D:\\work\\smartcity\\smartcity\\software\\datamanager\\datamanager\\Resources\\23.jpg"));
     ui->pwdLineEdit->setFocus();
     ui->loginBtn->setDefault(true);
 }
@@ -48,4 +49,14 @@ void LoginDialog::on_loginBtn_clicked()
 void LoginDialog::on_quitBtn_clicked()
 {
     QDialog::reject();
+}
+
+
+//ÉèÖÃ±³¾°Í¼Æ¬  path£ºÍ¼Æ¬Â·¾¶
+void LoginDialog::setBackgroundImage(QString path)
+{
+    QPixmap pixmap = QPixmap(path).scaled(this->size());
+    QPalette palette(this->palette());
+    palette.setBrush(QPalette::Background, QBrush(pixmap));
+    this->setPalette(palette);
 }

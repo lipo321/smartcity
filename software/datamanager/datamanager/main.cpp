@@ -12,6 +12,7 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
+    //添加插件
     QCoreApplication::addLibraryPath("D:\\QT\\qt4.8.6_x64\\plugins");
 
     //1.必须在创建数据库之前使用，不然无法在数据库中使用中文

@@ -14,29 +14,29 @@ Widget::Widget(QWidget *parent) :
     ui->stackedWidget->setCurrentIndex(0);
 
     QSqlQueryModel *typeModel = new QSqlQueryModel(this);
-    typeModel->setQuery("select * from type");
-    ui->sellTypeComboBox->setModel(typeModel);
+    typeModel->setQuery("select name from type");
+    ui->geomTypeComboBox->setModel(typeModel);
 
-    //QSplitter *splitter = new QSplitter(ui->managePage);
-    //splitter->resize(700, 360);
-    //splitter->move(0, 50);
+    QSplitter *splitter = new QSplitter(ui->managePage);
+    splitter->resize(700, 360);
+    splitter->move(0, 50);
 
-    //splitter->addWidget(ui->toolBox);
-    //splitter->addWidget(ui->dailyList);
-    //splitter->setStretchFactor(0, 1);
-    //splitter->setStretchFactor(1, 1);
+    splitter->addWidget(ui->toolBox);
+    splitter->addWidget(ui->dailyList);
+    splitter->setStretchFactor(0, 1);
+    splitter->setStretchFactor(1, 1);
 
-    //on_sellCancelBtn_clicked();
-    //on_goodsCancelBtn_clicked();
-    //on_newCancelBtn_clicked();
+    on_sellCancelBtn_clicked();
+    on_goodsCancelBtn_clicked();
+    on_newCancelBtn_clicked();
 
-    //showDailyList();
+    showDailyList();
 
-    //ui->typeComboBox->setModel(typeModel);
-    //ui->goodsTypeComboBox->setModel(typeModel);
-    //ui->newTypeComboBox->setModel(typeModel);
+    ui->typeComboBox->setModel(typeModel);
+    ui->goodsTypeComboBox->setModel(typeModel);
+    ui->newTypeComboBox->setModel(typeModel);
 
-    //createChartModelView();
+    createChartModelView();
 
 }
 
@@ -54,7 +54,7 @@ void Widget::on_geomTypeComboBox_currentIndexChanged(QString type)
     } else {
         ui->sellBrandComboBox->setEnabled(true);
         QSqlQueryModel *sellBrandModel = new QSqlQueryModel(this);
-        sellBrandModel->setQuery(QString("select name from metadata where type='%1'").arg(type));
+        sellBrandModel->setQuery(QString("select name from metadata where type=(select id from type where name='%1' )").arg(type));
         ui->sellBrandComboBox->setModel(sellBrandModel);
         ui->sellCancelBtn->setEnabled(true);
     }
@@ -69,7 +69,7 @@ void Widget::on_goodsTypeComboBox_currentIndexChanged(QString type)
     } else {
         ui->goodsBrandComboBox->setEnabled(true);
         QSqlQueryModel *goodBrandModel = new QSqlQueryModel(this);
-        goodBrandModel->setQuery(QString("select name from brand where type='%1'").arg(type));
+        goodBrandModel->setQuery(QString("select name from metadata where type=(select id from type where name='%1')").arg(type));
         ui->goodsBrandComboBox->setModel(goodBrandModel);
         ui->goodsCancelBtn->setEnabled(true);
     }
@@ -97,15 +97,25 @@ void Widget::on_sellBrandComboBox_currentIndexChanged(QString brand)
     ui->sellOkBtn->setEnabled(false);
 
     QSqlQuery query;
-    query.exec(QString("select price from brand where name='%1' and type='%2'")
-               .arg(brand).arg(ui->sellTypeComboBox->currentText()));
+    query.exec(QString("select geom_wkt from metadata where name='%1' and type=(select id from type where name='%2')")
+               .arg(brand).arg(ui->geomTypeComboBox->currentText()));
     query.next();
     ui->sellPriceLineEdit->setEnabled(true);
     ui->sellPriceLineEdit->setReadOnly(true);
     ui->sellPriceLineEdit->setText(query.value(0).toString());
 
-    query.exec(QString("select last from brand where name='%1' and type='%2'")
-               .arg(brand).arg(ui->sellTypeComboBox->currentText()));
+   
+    query.exec(QString("select des from metadata where name='%1' and type=(select id from type where name='%2')")
+        .arg(brand).arg(ui->geomTypeComboBox->currentText()));
+    query.next();
+    ui->sellSumLineEdit->setEnabled(true);
+    ui->sellSumLineEdit->setReadOnly(true);
+    QString mm = query.value(0).toString();
+    ui->sellSumLineEdit->setText(query.value(0).toString());
+    
+
+    query.exec(QString("select num from metadata where name='%1' and type=(select id from type where name='%2')")
+               .arg(brand).arg(ui->geomTypeComboBox->currentText()));
     query.next();
     int num = query.value(0).toInt();
 
@@ -129,7 +139,7 @@ void Widget::on_goodsBrandComboBox_currentIndexChanged(QString brand)
     ui->goodsOkBtn->setEnabled(false);
 
     QSqlQuery query;
-    query.exec(QString("select price from brand where name='%1' and type='%2'")
+    query.exec(QString("select geom_wkt from metadata where name='%1' and type=(select id from type where name='%2')")
                .arg(brand).arg(ui->goodsTypeComboBox->currentText()));
     query.next();
     ui->goodsPriceLineEdit->setEnabled(true);
@@ -162,14 +172,14 @@ void Widget::on_newBrandLineEdit_textChanged(QString str)
 void Widget::on_sellNumSpinBox_valueChanged(int value)
 {
     if (value == 0) {
-        ui->sellSumLineEdit->clear();
-        ui->sellSumLineEdit->setEnabled(false);
+       // ui->sellSumLineEdit->clear();
+       // ui->sellSumLineEdit->setEnabled(false);
         ui->sellOkBtn->setEnabled(false);
     } else {
-        ui->sellSumLineEdit->setEnabled(true);
-        ui->sellSumLineEdit->setReadOnly(true);
+       // ui->sellSumLineEdit->setEnabled(true);
+        //ui->sellSumLineEdit->setReadOnly(true);
         qreal sum = value * ui->sellPriceLineEdit->text().toInt();
-        ui->sellSumLineEdit->setText(QString::number(sum));
+        //ui->sellSumLineEdit->setText(QString::number(sum));
         ui->sellOkBtn->setEnabled(true);
     }
 }
@@ -210,7 +220,7 @@ void Widget::on_newNumSpinBox_valueChanged(int value)
 // 出售商品的取消按钮
 void Widget::on_sellCancelBtn_clicked()
 {
-    ui->sellTypeComboBox->setCurrentIndex(0);
+    ui->geomTypeComboBox->setCurrentIndex(0);
     ui->sellBrandComboBox->clear();
     ui->sellBrandComboBox->setEnabled(false);
     ui->sellPriceLineEdit->clear();
@@ -260,7 +270,7 @@ void Widget::on_newCancelBtn_clicked()
 // 出售商品的确定按钮
 void Widget::on_sellOkBtn_clicked()
 {
-    QString type = ui->sellTypeComboBox->currentText();
+    QString type = ui->geomTypeComboBox->currentText();
     QString name = ui->sellBrandComboBox->currentText();
     int value = ui->sellNumSpinBox->value();
     // cellNumSpinBox的最大值就是以前的剩余量
@@ -269,7 +279,7 @@ void Widget::on_sellOkBtn_clicked()
     QSqlQuery query;
 
     // 获取以前的销售量
-    query.exec(QString("select sell from brand where name='%1' and type='%2'")
+    query.exec(QString("select allselled from metadata where name='%1' and id = (select id from type where name ='%2')")
                .arg(name).arg(type));
     query.next();
     int sell = query.value(0).toInt() + value;
@@ -277,7 +287,7 @@ void Widget::on_sellOkBtn_clicked()
     // 事务操作
     QSqlDatabase::database().transaction();
     bool rtn = query.exec(
-                QString("update brand set sell=%1,last=%2 where name='%3' and type='%4'")
+                QString("update metadata set allselled=%1,num=%2 where name='%3'and id = (select id from type where name ='%4')")
                 .arg(sell).arg(last).arg(name).arg(type));
 
     if (rtn) {
@@ -301,22 +311,19 @@ void Widget::on_goodsOkBtn_clicked()
 
     QSqlQuery query;
     // 获取以前的总量
-    query.exec(QString("select sum from brand where name='%1' and type='%2'")
-               .arg(name).arg(type));
+   query.exec(QString("select num from metadata where name='%1' and type=(select id from type where name='%2')")
+       .arg(name).arg(type));
     query.next();
     int sum = query.value(0).toInt() + value;
 
-    // 获取以前的剩余量
-    query.exec(QString("select last from brand where name='%1' and type='%2'")
-               .arg(name).arg(type));
-    query.next();
-    int last = query.value(0).toInt() + value;
 
     // 事务操作
     QSqlDatabase::database().transaction();
     bool rtn = query.exec(
-                QString("update brand set sum=%1,last=%2 where name='%3' and type='%4'")
-                .arg(sum).arg(last).arg(name).arg(type));
+                QString("update metadata set num=%1 where name='%2' and type= (select id from type where name='%3')")
+                .arg(sum).arg(name).arg(type));
+    QString hhh = QString("update metadata set num=%1 where name='%2' and type= (select id from type where name='%3')")
+        .arg(sum).arg(name).arg(type);
     if (rtn) {
         QSqlDatabase::database().commit();
         QMessageBox::information(this, tr("提示"), tr("入库成功！"), QMessageBox::Ok);
@@ -336,24 +343,17 @@ void Widget::on_newOkBtn_clicked()
     qint16 num = ui->newNumSpinBox->value();
 
     QSqlQuery query;
-    query.exec("select id from brand");
+    query.exec("select id from metadata");
     query.last();
-    qreal temp = query.value(0).toInt() + 1;
-
-    QString id;
-    if (temp < 10) {
-        id = "0" + QString::number(temp);
-    } else {
-        id = QString::number(temp);
-    }
+    int id = query.value(0).toInt() + 1;
 
     qDebug() << "hello" <<id << type << brand << price << num;
 
 
     // 事务操作
     QSqlDatabase::database().transaction();
-    bool rtn = query.exec(QString("insert into brand values('%1', '%2', '%3', %4, %5, 0, %6)")
-                .arg(id).arg(brand).arg(type).arg(price).arg(num).arg(num));
+    bool rtn = query.exec(QString("insert into metadata values(%1, '%2',%3, '%4', '%5',%6,%7)")
+                .arg(id).arg(brand).arg(price).arg(brand).arg(brand).arg(num).arg(int(0)));
     if (rtn) {
         QSqlDatabase::database().commit();
         QMessageBox::information(this, tr("提示"), tr("入库成功！"), QMessageBox::Ok);
@@ -453,7 +453,7 @@ void Widget::createNodes(QDomElement &date)
     QDomElement sum = doc.createElement(QString("金额"));
     QDomText text;
     text = doc.createTextNode(QString("%1")
-                              .arg(ui->sellTypeComboBox->currentText()));
+                              .arg(ui->geomTypeComboBox->currentText()));
     type.appendChild(text);
     text = doc.createTextNode(QString("%1")
                               .arg(ui->sellBrandComboBox->currentText()));
@@ -483,7 +483,7 @@ void Widget::showDailyList()
     if (docRead()) {
         QDomElement root = doc.documentElement();
         QString title = root.tagName();
-        QListWidgetItem *titleItem = new QListWidgetItem;
+        QListWidgetItem *titleItem = new QListWidgetItem; 
         titleItem->setText(QString("-----%1-----").arg(title));
         titleItem->setTextAlignment(Qt::AlignCenter);
         ui->dailyList->addItem(titleItem);
@@ -552,11 +552,16 @@ void Widget::createChartModelView()
 // 显示销售记录图表
 void Widget::showChart()
 {
+    QString type = ui->typeComboBox->currentText();
+    if (type==QString::fromLocal8Bit("数据类型"))
+    {
+        return;
+    }
     QSqlQuery query;
-    query.exec(QString("select name,sell from brand where type='%1'")
-               .arg(ui->typeComboBox->currentText()));
+    query.exec(QString("select name,des from metadata where type=(select id from type where name='%1' )")
+               .arg(type));
 
-    chartModel->removeRows(0, chartModel->rowCount(QModelIndex()), QModelIndex());
+  //  chartModel->removeRows(0, chartModel->rowCount(QModelIndex()), QModelIndex());
 
     int row = 0;
 
@@ -591,13 +596,13 @@ void Widget::on_updateBtn_clicked()
         showChart();
 }
 
-// 商品管理按钮
+// 地理数据管理按钮
 void Widget::on_manageBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(0);
 }
 
-// 销售统计按钮
+// 地理数据销售统计按钮
 void Widget::on_chartBtn_clicked()
 {
     ui->stackedWidget->setCurrentIndex(1);
@@ -618,10 +623,10 @@ void Widget::on_changePwdBtn_clicked()
                              QMessageBox::Ok);
     } else {
         QSqlQuery query;
-        query.exec("select pwd from password");
+        query.exec("select password from user");
         query.next();
         if (query.value(0).toString() == ui->oldPwdLineEdit->text()) {
-            bool temp = query.exec(QString("update password set pwd='%1' where pwd='%2'")
+            bool temp = query.exec(QString("update user set password='%1' where password='%2'")
                                    .arg(ui->newPwdLineEdit->text()).arg(ui->oldPwdLineEdit->text()));
             if (temp) {
                 QMessageBox::information(this, tr("提示"), tr("密码修改成功！"),

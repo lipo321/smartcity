@@ -18,8 +18,8 @@
     <rect>
      <x>110</x>
      <y>40</y>
-     <width>160</width>
-     <height>16</height>
+     <width>211</width>
+     <height>41</height>
     </rect>
    </property>
    <property name="font">
@@ -38,7 +38,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>110</y>
+     <y>149</y>
      <width>211</width>
      <height>21</height>
     </rect>
@@ -51,7 +51,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>111</y>
+     <y>150</y>
      <width>36</width>
      <height>16</height>
     </rect>
@@ -84,6 +84,32 @@
    </property>
    <property name="text">
     <string>登录</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>110</y>
+     <width>36</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>账户：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nameLineEdit">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>110</y>
+     <width>211</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="echoMode">
+    <enum>QLineEdit::Normal</enum>
    </property>
   </widget>
  </widget>
