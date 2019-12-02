@@ -9,6 +9,7 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
+    ui->setWindowIcon(QIcon());
 
     setFixedSize(750, 500);
     ui->stackedWidget->setCurrentIndex(0);
