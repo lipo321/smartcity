@@ -340,7 +340,7 @@
        </rect>
       </property>
       <attribute name="label">
-       <string>已有地理数据入库</string>
+       <string>增加已有地理数据入库</string>
       </attribute>
       <widget class="QLabel" name="label_2">
        <property name="geometry">
@@ -365,7 +365,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>品牌：</string>
+        <string>地名：</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_10">
@@ -378,7 +378,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>单价：</string>
+        <string>范围：</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_11">
@@ -453,19 +453,6 @@
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="label_12">
-       <property name="geometry">
-        <rect>
-         <x>180</x>
-         <y>120</y>
-         <width>54</width>
-         <height>12</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>元</string>
-       </property>
-      </widget>
       <widget class="QLineEdit" name="goodsSumLineEdit">
        <property name="geometry">
         <rect>
@@ -479,19 +466,6 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="label_19">
-       <property name="geometry">
-        <rect>
-         <x>179</x>
-         <y>200</y>
-         <width>54</width>
-         <height>12</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>元</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_20">
        <property name="geometry">
         <rect>
@@ -502,7 +476,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>金额：</string>
+        <string>描述：</string>
        </property>
       </widget>
       <widget class="QSpinBox" name="goodsNumSpinBox">
@@ -557,7 +531,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>单价：</string>
+        <string>范围：</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_15">
@@ -596,19 +570,6 @@
         <string>类型：</string>
        </property>
       </widget>
-      <widget class="QLabel" name="label_17">
-       <property name="geometry">
-        <rect>
-         <x>170</x>
-         <y>100</y>
-         <width>54</width>
-         <height>12</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>元</string>
-       </property>
-      </widget>
       <widget class="QPushButton" name="newCancelBtn">
        <property name="geometry">
         <rect>
@@ -632,7 +593,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>品牌：</string>
+        <string>地名：</string>
        </property>
       </widget>
       <widget class="QPushButton" name="newOkBtn">
@@ -671,19 +632,6 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="label_21">
-       <property name="geometry">
-        <rect>
-         <x>189</x>
-         <y>180</y>
-         <width>54</width>
-         <height>12</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>元</string>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_22">
        <property name="geometry">
         <rect>
@@ -694,7 +642,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>金额：</string>
+        <string>描述：</string>
        </property>
       </widget>
       <widget class="QSpinBox" name="newPriceSpinBox">

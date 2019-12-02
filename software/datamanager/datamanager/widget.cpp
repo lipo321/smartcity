@@ -311,22 +311,19 @@ void Widget::on_goodsOkBtn_clicked()
 
     QSqlQuery query;
     // 获取以前的总量
-    query.exec(QString("select sum from brand where name='%1' and type='%2'")
-               .arg(name).arg(type));
+   query.exec(QString("select num from metadata where name='%1' and type=(select id from type where name='%2')")
+       .arg(name).arg(type));
     query.next();
     int sum = query.value(0).toInt() + value;
 
-    // 获取以前的剩余量
-    query.exec(QString("select last from brand where name='%1' and type='%2'")
-               .arg(name).arg(type));
-    query.next();
-    int last = query.value(0).toInt() + value;
 
     // 事务操作
     QSqlDatabase::database().transaction();
     bool rtn = query.exec(
-                QString("update brand set sum=%1,last=%2 where name='%3' and type='%4'")
-                .arg(sum).arg(last).arg(name).arg(type));
+                QString("update metadata set num=%1 where name='%2' and type= (select id from type where name='%3')")
+                .arg(sum).arg(name).arg(type));
+    QString hhh = QString("update metadata set num=%1 where name='%2' and type= (select id from type where name='%3')")
+        .arg(sum).arg(name).arg(type);
     if (rtn) {
         QSqlDatabase::database().commit();
         QMessageBox::information(this, tr("提示"), tr("入库成功！"), QMessageBox::Ok);
@@ -555,10 +552,14 @@ void Widget::createChartModelView()
 // 显示销售记录图表
 void Widget::showChart()
 {
-    int type = ui->typeComboBox->currentText().toInt();
+    QString type = ui->typeComboBox->currentText();
+    if (type==QString::fromLocal8Bit("数据类型"))
+    {
+        return;
+    }
     QSqlQuery query;
-    query.exec(QString("select name,des from brand where type=%1")
-               .arg(2));
+    query.exec(QString("select name,des from metadata where type=(select id from type where name='%1' )")
+               .arg(type));
 
   //  chartModel->removeRows(0, chartModel->rowCount(QModelIndex()), QModelIndex());
 
