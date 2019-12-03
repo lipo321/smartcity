@@ -2,6 +2,7 @@
     <qresource prefix="/datamanager">
         <file>Resources/block.png</file>
         <file>Resources/登录界面背景图片.jpg</file>
+        <file>Resources/windowIcon.jpg</file>
     </qresource>
     <qresource prefix="/new/image">
         <file>Resources/登录界面背景图片.jpg</file>

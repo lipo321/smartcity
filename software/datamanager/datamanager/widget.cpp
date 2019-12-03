@@ -9,7 +9,7 @@ Widget::Widget(QWidget *parent) :
     ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    ui->setWindowIcon(QIcon());
+    this->setWindowIcon(QIcon("D:\\work\\smartcity\\smartcity\\software\\datamanager\\datamanager\\Resources\\windowIcon.jpg"));
 
     setFixedSize(750, 500);
     ui->stackedWidget->setCurrentIndex(0);
@@ -84,6 +84,9 @@ void Widget::on_newTypeComboBox_currentIndexChanged(QString type)
         on_newCancelBtn_clicked();
     } else {
         ui->newBrandLineEdit->setEnabled(true);
+        ui->newSumLineEdit_2->setEnabled(true);
+        ui->newSumLineEdit->setEnabled(true);
+
         ui->newBrandLineEdit->setFocus();
     }
 }
@@ -153,18 +156,15 @@ void Widget::on_newBrandLineEdit_textChanged(QString str)
 {
     if (str == "") {
         ui->newCancelBtn->setEnabled(false);
-        ui->newPriceSpinBox->setEnabled(false);
         ui->newNumSpinBox->setEnabled(false);
         ui->newSumLineEdit->setEnabled(false);
         ui->newSumLineEdit->clear();
         ui->newOkBtn->setEnabled(false);
     } else {
         ui->newCancelBtn->setEnabled(true);
-        ui->newPriceSpinBox->setEnabled(true);
         ui->newNumSpinBox->setEnabled(true);
         ui->newSumLineEdit->setEnabled(true);
-        qreal sum = ui->newPriceSpinBox->value() * ui->newNumSpinBox->value();
-        ui->newSumLineEdit->setText(QString::number(sum));
+        ui->newSumLineEdit_2->setEnabled(true);
         ui->newOkBtn->setEnabled(true);
     }
 }
@@ -206,16 +206,17 @@ void Widget::on_goodsNumSpinBox_valueChanged(int value)
 void Widget::on_newPriceSpinBox_valueChanged(int value)
 {
     qreal sum = value * ui->newNumSpinBox->value();
-    ui->newSumLineEdit->setText(QString::number(sum));
+    ui->newSumLineEdit->setEnabled(true);
+
     ui->newOkBtn->setEnabled(true);
 }
 
 // 新商品数量
 void Widget::on_newNumSpinBox_valueChanged(int value)
 {
-    qreal sum = value * ui->newPriceSpinBox->value();
-    ui->newSumLineEdit->setText(QString::number(sum));
     ui->newOkBtn->setEnabled(true);
+    ui->newSumLineEdit->setEnabled(true);
+    ui->newSumLineEdit_2->setEnabled(true);
 }
 
 // 出售商品的取消按钮
@@ -257,11 +258,8 @@ void Widget::on_newCancelBtn_clicked()
     ui->newTypeComboBox->setCurrentIndex(0);
     ui->newBrandLineEdit->clear();
     ui->newBrandLineEdit->setEnabled(false);
-    ui->newPriceSpinBox->setEnabled(false);
-    ui->newPriceSpinBox->setValue(1);
     ui->newNumSpinBox->setEnabled(false);
     ui->newNumSpinBox->setValue(1);
-    ui->newSumLineEdit->setText("1");
     ui->newSumLineEdit->setEnabled(false);
     ui->newOkBtn->setEnabled(false);
     ui->newCancelBtn->setEnabled(false);
@@ -340,21 +338,25 @@ void Widget::on_newOkBtn_clicked()
 {
     QString type = ui->newTypeComboBox->currentText();
     QString brand = ui->newBrandLineEdit->text();
-    qint16 price = ui->newPriceSpinBox->value();
     qint16 num = ui->newNumSpinBox->value();
+    QString bbox = ui->newSumLineEdit_2->text();
+    QString des =ui->newSumLineEdit->text();
 
     QSqlQuery query;
     query.exec("select id from metadata");
     query.last();
     int id = query.value(0).toInt() + 1;
 
-    qDebug() << "hello" <<id << type << brand << price << num;
+
+    query.exec(QString("select id from type where name = '%1'").arg(type));
+    query.next();
+    int type_id = query.value(0).toInt();
 
 
     // 事务操作
     QSqlDatabase::database().transaction();
     bool rtn = query.exec(QString("insert into metadata values(%1, '%2',%3, '%4', '%5',%6,%7)")
-                .arg(id).arg(brand).arg(price).arg(brand).arg(brand).arg(num).arg(int(0)));
+                .arg(id).arg(brand).arg(type_id).arg(des).arg(bbox).arg(num).arg(int(0)));
     if (rtn) {
         QSqlDatabase::database().commit();
         QMessageBox::information(this, tr("提示"), tr("入库成功！"), QMessageBox::Ok);
@@ -510,8 +512,8 @@ void Widget::showDailyList()
                     QString sum = list.at(4).toElement().text();
 
                     QString str = time + " 出售 " + brand + type
-                            + " " + num + "台， " + "单价：" + price
-                            + "元， 共" + sum + "元";
+                            + " " + num + "份， " + "范围：" + price
+                            + "， 描述：" + sum ;
                     QListWidgetItem *tempItem = new QListWidgetItem;
                     tempItem->setText("**************************");
                     tempItem->setTextAlignment(Qt::AlignCenter);

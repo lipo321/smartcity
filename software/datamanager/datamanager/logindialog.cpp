@@ -9,7 +9,7 @@ LoginDialog::LoginDialog(QWidget *parent) :
     ui(new Ui::LoginDialog)
 {
     ui->setupUi(this);
-
+     this->setWindowIcon(QIcon("D:\\work\\smartcity\\smartcity\\software\\datamanager\\datamanager\\Resources\\windowIcon.jpg"));
     setFixedSize(400, 300);
     setWindowTitle(tr("µÇÂ¼Ò³Ãæ"));
     setBackgroundImage(QString::fromUtf8("D:\\work\\smartcity\\smartcity\\software\\datamanager\\datamanager\\Resources\\23.jpg"));

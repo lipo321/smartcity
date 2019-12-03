@@ -624,12 +624,12 @@
         <rect>
          <x>72</x>
          <y>180</y>
-         <width>100</width>
+         <width>211</width>
          <height>20</height>
         </rect>
        </property>
        <property name="readOnly">
-        <bool>true</bool>
+        <bool>false</bool>
        </property>
       </widget>
       <widget class="QLabel" name="label_22">
@@ -645,23 +645,14 @@
         <string>描述：</string>
        </property>
       </widget>
-      <widget class="QSpinBox" name="newPriceSpinBox">
+      <widget class="QLineEdit" name="newSumLineEdit_2">
        <property name="geometry">
         <rect>
-         <x>73</x>
+         <x>70</x>
          <y>100</y>
-         <width>91</width>
+         <width>211</width>
          <height>20</height>
         </rect>
-       </property>
-       <property name="minimum">
-        <number>1</number>
-       </property>
-       <property name="maximum">
-        <number>99999</number>
-       </property>
-       <property name="value">
-        <number>1</number>
        </property>
       </widget>
      </widget>
