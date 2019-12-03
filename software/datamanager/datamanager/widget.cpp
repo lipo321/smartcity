@@ -278,7 +278,7 @@ void Widget::on_sellOkBtn_clicked()
     QSqlQuery query;
 
     // 获取以前的销售量
-    query.exec(QString("select allselled from metadata where name='%1' and id = (select id from type where name ='%2')")
+    query.exec(QString("select allselled from metadata where name='%1' and type = (select id from type where name ='%2')")
                .arg(name).arg(type));
     query.next();
     int sell = query.value(0).toInt() + value;
@@ -286,7 +286,7 @@ void Widget::on_sellOkBtn_clicked()
     // 事务操作
     QSqlDatabase::database().transaction();
     bool rtn = query.exec(
-                QString("update metadata set allselled=%1,num=%2 where name='%3'and id = (select id from type where name ='%4')")
+                QString("update metadata set allselled=%1,num=%2 where name='%3'and type = (select id from type where name ='%4')")
                 .arg(sell).arg(last).arg(name).arg(type));
 
     if (rtn) {
@@ -321,8 +321,6 @@ void Widget::on_goodsOkBtn_clicked()
     bool rtn = query.exec(
                 QString("update metadata set num=%1 where name='%2' and type= (select id from type where name='%3')")
                 .arg(sum).arg(name).arg(type));
-    QString hhh = QString("update metadata set num=%1 where name='%2' and type= (select id from type where name='%3')")
-        .arg(sum).arg(name).arg(type);
     if (rtn) {
         QSqlDatabase::database().commit();
         QMessageBox::information(this, tr("提示"), tr("入库成功！"), QMessageBox::Ok);
@@ -531,7 +529,7 @@ void Widget::createChartModelView()
 {
     chartModel = new QStandardItemModel(this);
     chartModel->setColumnCount(2);
-    chartModel->setHeaderData(0, Qt::Horizontal, QString("品牌"));
+    chartModel->setHeaderData(0, Qt::Horizontal, QString("地名"));
     chartModel->setHeaderData(1, Qt::Horizontal, QString("销售数量"));
 
     QSplitter *splitter = new QSplitter(ui->chartPage);
@@ -561,10 +559,10 @@ void Widget::showChart()
         return;
     }
     QSqlQuery query;
-    query.exec(QString("select name,des from metadata where type=(select id from type where name='%1' )")
+    query.exec(QString("select name,allselled from metadata where type=(select id from type where name='%1' )")
                .arg(type));
 
-  //  chartModel->removeRows(0, chartModel->rowCount(QModelIndex()), QModelIndex());
+    chartModel->removeRows(0, chartModel->rowCount(QModelIndex()), QModelIndex());
 
     int row = 0;
 
