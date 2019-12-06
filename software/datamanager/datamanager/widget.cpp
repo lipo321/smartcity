@@ -11,30 +11,20 @@ Widget::Widget(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowIcon(QIcon("D:\\work\\smartcity\\smartcity\\software\\datamanager\\datamanager\\Resources\\windowIcon.jpg"));
 
-    setFixedSize(750, 500);
     ui->stackedWidget->setCurrentIndex(0);
 
     QSqlQueryModel *typeModel = new QSqlQueryModel(this);
     typeModel->setQuery("select name from type");
     ui->geomTypeComboBox->setModel(typeModel);
 
-    QSplitter *splitter = new QSplitter(ui->managePage);
-    splitter->resize(700, 360);
-    splitter->move(0, 50);
-
-    splitter->addWidget(ui->toolBox);
-    splitter->addWidget(ui->dailyList);
-    splitter->setStretchFactor(0, 1);
-    splitter->setStretchFactor(1, 1);
-
     on_sellCancelBtn_clicked();
-    on_goodsCancelBtn_clicked();
+    on_dataCancelBtn_clicked();
     on_newCancelBtn_clicked();
 
     showDailyList();
 
     ui->typeComboBox->setModel(typeModel);
-    ui->goodsTypeComboBox->setModel(typeModel);
+    ui->dataTypeComboBox->setModel(typeModel);
     ui->newTypeComboBox->setModel(typeModel);
 
     createChartModelView();
@@ -61,22 +51,22 @@ void Widget::on_geomTypeComboBox_currentIndexChanged(QString type)
     }
 }
 
-// 已有商品入库的商品类型改变时
-void Widget::on_goodsTypeComboBox_currentIndexChanged(QString type)
+// 已有数据入库的数据类型改变时
+void Widget::on_dataTypeComboBox_currentIndexChanged(QString type)
 {
     if (type == "请选择类型") {
         // 进行其他部件的状态设置
-        on_goodsCancelBtn_clicked();
+        on_dataCancelBtn_clicked();
     } else {
-        ui->goodsBrandComboBox->setEnabled(true);
+        ui->dataBrandComboBox->setEnabled(true);
         QSqlQueryModel *goodBrandModel = new QSqlQueryModel(this);
         goodBrandModel->setQuery(QString("select name from metadata where type=(select id from type where name='%1')").arg(type));
-        ui->goodsBrandComboBox->setModel(goodBrandModel);
-        ui->goodsCancelBtn->setEnabled(true);
+        ui->dataBrandComboBox->setModel(goodBrandModel);
+        ui->dataCancelBtn->setEnabled(true);
     }
 }
 
-// 新商品入库类型改变时
+// 新数据入库类型改变时
 void Widget::on_newTypeComboBox_currentIndexChanged(QString type)
 {
     if (type == "请选择类型") {
@@ -91,7 +81,7 @@ void Widget::on_newTypeComboBox_currentIndexChanged(QString type)
     }
 }
 
-// 出售商品的品牌改变时
+// 出售数据的类型改变时
 void Widget::on_sellBrandComboBox_currentIndexChanged(QString brand)
 {
     ui->sellNumSpinBox->setValue(0);
@@ -124,7 +114,7 @@ void Widget::on_sellBrandComboBox_currentIndexChanged(QString brand)
     int num = query.value(0).toInt();
 
     if (num == 0) {
-        QMessageBox::information(this, tr("提示"), tr("该商品已经售完！"), QMessageBox::Ok);
+        QMessageBox::information(this, tr("提示"), tr("该数据已经售完！"), QMessageBox::Ok);
     } else {
         ui->sellNumSpinBox->setEnabled(true);
         ui->sellNumSpinBox->setMaximum(num);
@@ -133,25 +123,31 @@ void Widget::on_sellBrandComboBox_currentIndexChanged(QString brand)
     }
 }
 
-// 已有商品入库的品牌改变时
-void Widget::on_goodsBrandComboBox_currentIndexChanged(QString brand)
+// 已有数据入库的类型改变时
+void Widget::on_dataBrandComboBox_currentIndexChanged(QString brand)
 {
-    ui->goodsNumSpinBox->setValue(0);
-    ui->goodsNumSpinBox->setEnabled(true);
-    ui->goodsSumLineEdit->clear();
-    ui->goodsSumLineEdit->setEnabled(false);
-    ui->goodsOkBtn->setEnabled(false);
+    ui->dataNumSpinBox->setValue(0);
+    ui->dataNumSpinBox->setEnabled(true);
+    
+    ui->dataOkBtn->setEnabled(false);
 
     QSqlQuery query;
     query.exec(QString("select geom_wkt from metadata where name='%1' and type=(select id from type where name='%2')")
-               .arg(brand).arg(ui->goodsTypeComboBox->currentText()));
+               .arg(brand).arg(ui->dataTypeComboBox->currentText()));
     query.next();
-    ui->goodsPriceLineEdit->setEnabled(true);
-    ui->goodsPriceLineEdit->setReadOnly(true);
-    ui->goodsPriceLineEdit->setText(query.value(0).toString());
+    ui->dataPriceLineEdit->setEnabled(true);
+    ui->dataPriceLineEdit->setReadOnly(true);
+    ui->dataPriceLineEdit->setText(query.value(0).toString());
+    
+    query.exec(QString("select des from metadata where name='%1' and type=(select id from type where name='%2')")
+        .arg(brand).arg(ui->dataTypeComboBox->currentText()));
+    query.next();
+    ui->dataSumLineEdit->clear();
+    ui->dataSumLineEdit->setEnabled(true);
+     ui->dataSumLineEdit->setText(query.value(0).toString());
 }
 
-// 新商品品牌改变时
+// 新数据类型改变时
 void Widget::on_newBrandLineEdit_textChanged(QString str)
 {
     if (str == "") {
@@ -169,40 +165,33 @@ void Widget::on_newBrandLineEdit_textChanged(QString str)
     }
 }
 
-// 出售商品数量改变时
+// 出售数据数量改变时
 void Widget::on_sellNumSpinBox_valueChanged(int value)
 {
     if (value == 0) {
-       // ui->sellSumLineEdit->clear();
-       // ui->sellSumLineEdit->setEnabled(false);
         ui->sellOkBtn->setEnabled(false);
     } else {
-       // ui->sellSumLineEdit->setEnabled(true);
-        //ui->sellSumLineEdit->setReadOnly(true);
         qreal sum = value * ui->sellPriceLineEdit->text().toInt();
-        //ui->sellSumLineEdit->setText(QString::number(sum));
         ui->sellOkBtn->setEnabled(true);
     }
 }
 
-// 已有商品入库数量改变时
-void Widget::on_goodsNumSpinBox_valueChanged(int value)
+// 已有数据入库数量改变时
+void Widget::on_dataNumSpinBox_valueChanged(int value)
 {
     if (value == 0) {
-        ui->goodsSumLineEdit->clear();
-        ui->goodsSumLineEdit->setEnabled(false);
-        ui->goodsOkBtn->setEnabled(false);
+        ui->dataSumLineEdit->clear();
+        ui->dataSumLineEdit->setEnabled(true);
+        ui->dataOkBtn->setEnabled(false);
     } else {
-        ui->goodsSumLineEdit->setEnabled(true);
-        ui->goodsSumLineEdit->setReadOnly(true);
-        qreal sum = value * ui->goodsPriceLineEdit->text().toInt();
-        ui->goodsSumLineEdit->setText(QString::number(sum));
-        ui->goodsOkBtn->setEnabled(true);
+        ui->dataSumLineEdit->setEnabled(true);
+        qreal sum = value * ui->dataPriceLineEdit->text().toInt();
+        ui->dataOkBtn->setEnabled(true);
     }
 
 }
 
-// 新商品单价改变时
+// 新数据单价改变时
 void Widget::on_newPriceSpinBox_valueChanged(int value)
 {
     qreal sum = value * ui->newNumSpinBox->value();
@@ -211,7 +200,7 @@ void Widget::on_newPriceSpinBox_valueChanged(int value)
     ui->newOkBtn->setEnabled(true);
 }
 
-// 新商品数量
+// 新数据数量
 void Widget::on_newNumSpinBox_valueChanged(int value)
 {
     ui->newOkBtn->setEnabled(true);
@@ -219,7 +208,7 @@ void Widget::on_newNumSpinBox_valueChanged(int value)
     ui->newSumLineEdit_2->setEnabled(true);
 }
 
-// 出售商品的取消按钮
+// 出售数据的取消按钮
 void Widget::on_sellCancelBtn_clicked()
 {
     ui->geomTypeComboBox->setCurrentIndex(0);
@@ -236,23 +225,23 @@ void Widget::on_sellCancelBtn_clicked()
     ui->sellLastNumLabel->setVisible(false);
 }
 
-// 已有商品入库的取消按钮
-void Widget::on_goodsCancelBtn_clicked()
+// 已有数据入库的取消按钮
+void Widget::on_dataCancelBtn_clicked()
 {
-    ui->goodsTypeComboBox->setCurrentIndex(0);
-    ui->goodsBrandComboBox->clear();
-    ui->goodsBrandComboBox->setEnabled(false);
-    ui->goodsPriceLineEdit->clear();
-    ui->goodsPriceLineEdit->setEnabled(false);
-    ui->goodsNumSpinBox->setValue(0);
-    ui->goodsNumSpinBox->setEnabled(false);
-    ui->goodsSumLineEdit->clear();
-    ui->goodsSumLineEdit->setEnabled(false);
-    ui->goodsOkBtn->setEnabled(false);
-    ui->goodsCancelBtn->setEnabled(false);
+    ui->dataTypeComboBox->setCurrentIndex(0);
+    ui->dataBrandComboBox->clear();
+    ui->dataBrandComboBox->setEnabled(false);
+    ui->dataPriceLineEdit->clear();
+    ui->dataPriceLineEdit->setEnabled(false);
+    ui->dataNumSpinBox->setValue(0);
+    ui->dataNumSpinBox->setEnabled(false);
+    ui->dataSumLineEdit->clear();
+    ui->dataSumLineEdit->setEnabled(false);
+    ui->dataOkBtn->setEnabled(false);
+    ui->dataCancelBtn->setEnabled(false);
 }
 
-// 新商品入库的取消按钮
+// 新数据入库的取消按钮
 void Widget::on_newCancelBtn_clicked()
 {
     ui->newTypeComboBox->setCurrentIndex(0);
@@ -266,7 +255,7 @@ void Widget::on_newCancelBtn_clicked()
 }
 
 
-// 出售商品的确定按钮
+// 出售数据的确定按钮
 void Widget::on_sellOkBtn_clicked()
 {
     QString type = ui->geomTypeComboBox->currentText();
@@ -301,12 +290,12 @@ void Widget::on_sellOkBtn_clicked()
     on_sellCancelBtn_clicked();
 }
 
-// 已有商品入库的确定按钮
-void Widget::on_goodsOkBtn_clicked()
+// 已有数据入库的确定按钮
+void Widget::on_dataOkBtn_clicked()
 {
-    QString type = ui->goodsTypeComboBox->currentText();
-    QString name = ui->goodsBrandComboBox->currentText();
-    int value = ui->goodsNumSpinBox->value();
+    QString type = ui->dataTypeComboBox->currentText();
+    QString name = ui->dataBrandComboBox->currentText();
+    int value = ui->dataNumSpinBox->value();
 
     QSqlQuery query;
     // 获取以前的总量
@@ -328,10 +317,10 @@ void Widget::on_goodsOkBtn_clicked()
         QSqlDatabase::database().rollback();
         QMessageBox::information(this, tr("提示"), tr("入库失败，无法访问数据库！"), QMessageBox::Ok);
     }
-    on_goodsCancelBtn_clicked();
+    on_dataCancelBtn_clicked();
 }
 
-// 新商品的确定按钮
+// 新数据的确定按钮
 void Widget::on_newOkBtn_clicked()
 {
     QString type = ui->newTypeComboBox->currentText();
@@ -448,7 +437,7 @@ void Widget::createNodes(QDomElement &date)
     date.appendChild(time);
 
     QDomElement type = doc.createElement(QString("类型"));
-    QDomElement brand = doc.createElement(QString("品牌"));
+    QDomElement brand = doc.createElement(QString("类型"));
     QDomElement price = doc.createElement(QString("单价"));
     QDomElement num = doc.createElement(QString("数量"));
     QDomElement sum = doc.createElement(QString("金额"));
@@ -498,7 +487,7 @@ void Widget::showDailyList()
                 ui->dailyList->addItem(QString("日期：%1").arg(date));
                 ui->dailyList->addItem("");
                 QDomNodeList children = dateElement.childNodes();
-                // 遍历当日销售的所有商品
+                // 遍历当日销售的所有数据
                 for (int i=0; i<children.count(); i++) {
                     QDomNode node = children.at(i);
                     QString time = node.toElement().attribute("time");

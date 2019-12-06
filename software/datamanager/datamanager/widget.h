@@ -44,15 +44,15 @@ private slots:
 
     void on_passwordBtn_clicked();
 
-    void on_goodsTypeComboBox_currentIndexChanged(QString );
+    void on_dataTypeComboBox_currentIndexChanged(QString );
 
-    void on_goodsCancelBtn_clicked();
+    void on_dataCancelBtn_clicked();
 
-    void on_goodsBrandComboBox_currentIndexChanged(QString );
+    void on_dataBrandComboBox_currentIndexChanged(QString );
 
-    void on_goodsNumSpinBox_valueChanged(int );
+    void on_dataNumSpinBox_valueChanged(int );
 
-    void on_goodsOkBtn_clicked();
+    void on_dataOkBtn_clicked();
 
     void on_newTypeComboBox_currentIndexChanged(QString );
 
