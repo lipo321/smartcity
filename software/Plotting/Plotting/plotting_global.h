@@ -1,0 +1,12 @@
+#ifndef PLOTTING_GLOBAL_H
+#define PLOTTING_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#ifdef PLOTTING_LIB
+# define MAPTOOL_PLOTTING_EXPORT Q_DECL_EXPORT
+#else
+# define MAPTOOL_PLOTTING_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // PLOTTING_GLOBAL_H

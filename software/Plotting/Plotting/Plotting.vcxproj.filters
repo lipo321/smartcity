@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{fa7a5c19-ae3e-4440-8d66-a4a3b1470379}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{8c6a5c5e-dad6-4ab2-b10b-7a2a5b39080f}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="plot">
+      <UniqueIdentifier>{48c64523-8984-42bd-a34b-c388645ecc5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="maptool">
+      <UniqueIdentifier>{ffd273b2-ae19-48a5-891e-09d0f09c63b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="demotool">
+      <UniqueIdentifier>{daac8a5f-f507-4fd6-bbae-b4ec8f5dc086}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ellipse">
+      <UniqueIdentifier>{b2e2651c-8653-4fc0-8c21-b49a93c55620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="svgtool">
+      <UniqueIdentifier>{f0189b03-942e-4ca0-8706-0852b0d0faa5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="plotting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_plotting.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="C_Singleton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_plotting.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_svgannotationimageitem.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_svgannotationimageitem.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsannotationitem.cpp">
+      <Filter>plot</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsmapcanvasitem.cpp">
+      <Filter>plot</Filter>
+    </ClCompile>
+    <ClCompile Include="qgscursors.cpp">
+      <Filter>maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsgeometryrubberband.cpp">
+      <Filter>maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsmaptool.cpp">
+      <Filter>maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_qgsmaptool.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_qgsmaptool.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_qgsmaptooladdplot.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_qgsmaptooladdplot.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsmaptooladvanceddigitizing.cpp">
+      <Filter>maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_qgsmaptooladvanceddigitizing.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_qgsmaptooladvanceddigitizing.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsmaptoolcapture.cpp">
+      <Filter>maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_qgsmaptoolcapture.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_qgsmaptoolcapture.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsmaptooledit.cpp">
+      <Filter>maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_qgsmaptooledit.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_qgsmaptooledit.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsrubberband.cpp">
+      <Filter>maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsvertexmarker.cpp">
+      <Filter>maptool</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_IC_QgsMapTool.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_IC_QgsMapTool.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="qgsmaptooladdplot.cpp">
+      <Filter>demotool</Filter>
+    </ClCompile>
+    <ClCompile Include="svgannotationimageitem.cpp">
+      <Filter>svgtool</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_addsvgtool.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_addsvgtool.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="addsvgtool.cpp">
+      <Filter>svgtool</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="plotting_global.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="C_Singleton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qgsannotationitem.h">
+      <Filter>plot</Filter>
+    </ClInclude>
+    <ClInclude Include="qgsmapcanvasitem.h">
+      <Filter>plot</Filter>
+    </ClInclude>
+    <ClInclude Include="qgscursors.h">
+      <Filter>maptool</Filter>
+    </ClInclude>
+    <ClInclude Include="qgsgeometryrubberband.h">
+      <Filter>maptool</Filter>
+    </ClInclude>
+    <ClInclude Include="qgsrubberband.h">
+      <Filter>maptool</Filter>
+    </ClInclude>
+    <ClInclude Include="qgsvertexmarker.h">
+      <Filter>maptool</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="plotting.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qgsmaptool.h">
+      <Filter>maptool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qgsmaptooladvanceddigitizing.h">
+      <Filter>maptool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qgsmaptoolcapture.h">
+      <Filter>maptool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qgsmaptooledit.h">
+      <Filter>maptool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="..\..\..\..\..\include\2dmap\visualization\IC_QgsMapTool.h">
+      <Filter>maptool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="qgsmaptooladdplot.h">
+      <Filter>demotool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="svgannotationimageitem.h">
+      <Filter>svgtool</Filter>
+    </CustomBuild>
+    <CustomBuild Include="addsvgtool.h">
+      <Filter>svgtool</Filter>
+    </CustomBuild>
+  </ItemGroup>
+</Project>
