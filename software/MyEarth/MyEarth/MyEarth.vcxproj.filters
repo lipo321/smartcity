@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="Form Files">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
+    </Filter>
+    <Filter Include="Generated Files">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Debug">
+      <UniqueIdentifier>{2ef6c854-9dfa-4229-8006-007d96625811}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated Files\Release">
+      <UniqueIdentifier>{0cbc3509-74a8-4ea8-8280-6eb09741b3b2}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="osgEarth">
+      <UniqueIdentifier>{f4b4dd16-2cd4-4bd4-911a-6db551621e5f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="osgearth\area.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\areaanalysis.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\avatar.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_avatar.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_avatar.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\calcmath.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\controlavatar.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_controlavatar.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_controlavatar.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\distance.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\drawcircle.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\drawline.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\drawpolygon.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\EventAdapter.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\framehandle.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_framehandle.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_framehandle.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\graphicsview.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_graphicsview.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_graphicsview.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\handleadapter.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_handleadapter.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_handleadapter.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\height.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\lineanalysis.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\pickhandle.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_pickhandle.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_pickhandle.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\radarmap.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_radarmap.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_radarmap.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth\water.cpp">
+      <Filter>osgEarth</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_osgearth.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_osgearth.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\qrc_osgearth.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="osgearth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainosg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="osgearth\avatar.h">
+      <Filter>osgEarth</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth\controlavatar.h">
+      <Filter>osgEarth</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth\framehandle.h">
+      <Filter>osgEarth</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth\graphicsview.h">
+      <Filter>osgEarth</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth\handleadapter.h">
+      <Filter>osgEarth</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth\pickhandle.h">
+      <Filter>osgEarth</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth\radarmap.h">
+      <Filter>osgEarth</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="osgearth.qrc">
+      <Filter>Resource Files</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="osgearth\area.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\areaanalysis.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\calcmath.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\distance.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\drawcircle.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\drawline.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\drawpolygon.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\EventAdapter.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\height.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\lineanalysis.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\MyOSG.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\MyOSGEarth.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="osgearth\water.h">
+      <Filter>osgEarth</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_osgearth.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
