@@ -83,6 +83,7 @@
     <ClInclude Include="DerivedLevel2.h" />
     <ClInclude Include="DerivedLevel3.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="ObjectC.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -96,6 +97,7 @@
     <ClCompile Include="DerivedLevel3.cpp" />
     <ClCompile Include="learn.cpp" />
     <ClCompile Include="Node.cpp" />
+    <ClCompile Include="ObjectC.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

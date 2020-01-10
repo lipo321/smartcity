@@ -82,8 +82,8 @@ int _tmain(int argc, _TCHAR* argv[])
     p->f();
     p->g();
 
-    p=(Class1*)&object3;
-    p->g();
+    object3.h();
+   
 #endif
     
 	return 0;
