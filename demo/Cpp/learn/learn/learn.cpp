@@ -8,6 +8,10 @@
 #include "DerivedLevel2.h"
 #include "DerivedLevel3.h"
 
+#include "Class1.h"
+#include "Class2.h"
+#include "Class3.h"
+
 #include <iostream>
 using namespace std;
 
@@ -44,13 +48,14 @@ double root(double (*f)(double),double a,double b,double epsilon)
 }
 int _tmain(int argc, _TCHAR* argv[])
 {
+#if 0
     BaseClass bc;
     DerivedLevel1 d1;
     DerivedLevel2 d2;
     DerivedLevel3 d3;
 
     bc.f("main(1)");
-    
+
     d1.f("main(2)");
     d1.h("main(3)");
 
@@ -64,6 +69,23 @@ int _tmain(int argc, _TCHAR* argv[])
     cout<< sum(sin,3,7)<<endl;
 
     cout<<root(f,1,9,0.2)<<endl;
+#else
+    Class1 object1,*p;
+    Class2 object2;
+    Class3 object3;
+
+    p=&object1;
+    p->f();
+    p->g();
+
+    p=(Class1*)&object2;
+    p->f();
+    p->g();
+
+    p=(Class1*)&object3;
+    p->g();
+#endif
+    
 	return 0;
 }
 

@@ -19,6 +19,9 @@
     <Filter Include="learn2">
       <UniqueIdentifier>{c686c553-136a-4fb1-aa86-06fc61443836}</UniqueIdentifier>
     </Filter>
+    <Filter Include="learn3">
+      <UniqueIdentifier>{b77a1faf-d2bc-4938-a543-3a53230bb781}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -45,6 +48,15 @@
     <ClInclude Include="Node.h">
       <Filter>learn2</Filter>
     </ClInclude>
+    <ClInclude Include="Class1.h">
+      <Filter>learn3</Filter>
+    </ClInclude>
+    <ClInclude Include="Class2.h">
+      <Filter>learn3</Filter>
+    </ClInclude>
+    <ClInclude Include="Class3.h">
+      <Filter>learn3</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -67,6 +79,15 @@
     </ClCompile>
     <ClCompile Include="Node.cpp">
       <Filter>learn2</Filter>
+    </ClCompile>
+    <ClCompile Include="Class1.cpp">
+      <Filter>learn3</Filter>
+    </ClCompile>
+    <ClCompile Include="Class2.cpp">
+      <Filter>learn3</Filter>
+    </ClCompile>
+    <ClCompile Include="Class3.cpp">
+      <Filter>learn3</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

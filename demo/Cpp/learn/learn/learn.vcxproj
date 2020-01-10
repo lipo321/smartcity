@@ -76,6 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BaseClass.h" />
+    <ClInclude Include="Class1.h" />
+    <ClInclude Include="Class2.h" />
+    <ClInclude Include="Class3.h" />
     <ClInclude Include="DerivedLevel1.h" />
     <ClInclude Include="DerivedLevel2.h" />
     <ClInclude Include="DerivedLevel3.h" />
@@ -85,6 +88,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseClass.cpp" />
+    <ClCompile Include="Class1.cpp" />
+    <ClCompile Include="Class2.cpp" />
+    <ClCompile Include="Class3.cpp" />
     <ClCompile Include="DerivedLevel1.cpp" />
     <ClCompile Include="DerivedLevel2.cpp" />
     <ClCompile Include="DerivedLevel3.cpp" />
