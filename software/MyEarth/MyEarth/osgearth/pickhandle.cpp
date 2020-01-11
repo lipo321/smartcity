@@ -77,8 +77,7 @@ osg::Vec3d PickHandle::getPos(const osgGA::GUIEventAdapter& ea,
 	double x = ea.getX();
 	double y = ea.getY();
 	pViewer->computeIntersections(ea.getX(), ea.getY(), intersection);
-	osgUtil::LineSegmentIntersector::Intersections::iterator iter
-		= intersection.begin();
+	osgUtil::LineSegmentIntersector::Intersections::iterator iter= intersection.begin();
 	if (iter != intersection.end())
 	{
 		m_pEllipsoid->convertXYZToLatLongHeight(

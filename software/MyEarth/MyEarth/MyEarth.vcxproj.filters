@@ -5,10 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;cxx;c;def</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h</Extensions>
-    </Filter>
     <Filter Include="Form Files">
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
@@ -35,6 +31,16 @@
     </Filter>
     <Filter Include="osgEarth">
       <UniqueIdentifier>{f4b4dd16-2cd4-4bd4-911a-6db551621e5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FeatureQueryTool">
+      <UniqueIdentifier>{9ddb5ee5-b401-4fb1-ae88-637c6def9324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="标绘">
+      <UniqueIdentifier>{ece6ebc6-8002-4cdf-8233-aa7fba4cbe0d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +158,60 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="FeatureQueryTool.cpp">
+      <Filter>FeatureQueryTool</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GVCoord.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GVLineCreator.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\KidNey.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\LineStyle.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\UseEventHandler.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\Bezier.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\ConfigControlPoints.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\DraggerPositionChanged.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GV00001.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GV00002.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GV00003.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GV00004.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GV00005.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GV00006.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GV00007.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GVAnnotation.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
+    <ClCompile Include="plotting\GxWorld.cpp">
+      <Filter>标绘</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="osgearth\avatar.h">
@@ -227,6 +287,66 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_osgearth.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FeatureQueryTool.h">
+      <Filter>FeatureQueryTool</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GVCoord.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GVGeometry.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GVLineCreator.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\KidNey.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\LineStyle.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\UseEventHandler.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\Bezier.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\ConfigControlPoints.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\DraggerPositionChanged.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GV00001.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GV00002.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GV00003.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GV00004.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GV00005.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GV00006.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GV00007.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GVAnnotations.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\GxWorld.h">
+      <Filter>标绘</Filter>
+    </ClInclude>
+    <ClInclude Include="plotting\I_GxWorld.h">
+      <Filter>标绘</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

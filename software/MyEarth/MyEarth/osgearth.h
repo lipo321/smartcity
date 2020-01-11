@@ -40,6 +40,7 @@ private slots:
 	void slotGride();
 	void slotRadarMap();
 	void slotSwitchMap();
+    void slotSetCatalog();
 
 private:
 	Ui::OSGEarthClass ui;

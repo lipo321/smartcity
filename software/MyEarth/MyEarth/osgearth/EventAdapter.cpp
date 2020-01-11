@@ -8,7 +8,10 @@ EventAdapter::EventAdapter()
 
 EventAdapter::~EventAdapter()
 {
-
+    if (m_pGraphicsWindow != nullptr)
+    {
+        delete m_pGraphicsWindow;
+    }
 }
 
 bool EventAdapter::viewportEvent(QEvent* event)

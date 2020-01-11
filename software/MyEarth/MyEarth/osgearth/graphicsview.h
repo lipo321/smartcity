@@ -22,13 +22,12 @@ public:
 	osgEarth::Util::EarthManipulator* getManipulator(){ return m_pEarthManipulator; }
 	void setEarthFile(const QString& str);
 	void release();
-
+    void init();
 protected:
 	virtual void drawBackground(QPainter *painter, const QRectF& rect);
 	virtual void timerEvent(QTimerEvent *event);
 
 private:
-	void init();
 	void createSky();
 
 private:

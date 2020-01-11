@@ -1,6 +1,6 @@
 #include "OSGEarth.h"
 #include <QFileDialog>
-
+#include <QLabel>
 OSGEarth::OSGEarth(QWidget *parent)
 	: QMainWindow(parent)
 {
@@ -22,7 +22,7 @@ OSGEarth::OSGEarth(QWidget *parent)
 	m_pGraticule = NULL;
 	m_pRadarMap = nullptr;
 
-	m_pViewer = new GraphicsView(QString::fromUtf8("D:/earth/OsgEarth2.8_SDK/tests/boston_buildings.earth"), this);
+	m_pViewer = new GraphicsView(QString::fromUtf8("D:/earth/OsgEarth2.8_SDK/tests/feature_geom.earth"), this);
 	this->setCentralWidget(m_pViewer);
 
 	m_pDockWidget = new QDockWidget(this);
@@ -51,6 +51,7 @@ OSGEarth::OSGEarth(QWidget *parent)
 	connect(ui.actionGride, SIGNAL(triggered()), this, SLOT(slotGride()));
 	connect(ui.actionMap, SIGNAL(triggered()), this, SLOT(slotRadarMap()));
 	connect(ui.actionSwitchMap, SIGNAL(triggered()), this, SLOT(slotSwitchMap()));
+    connect(ui.actionCatalog,SIGNAL(triggered()), this, SLOT(slotSetCatalog()));
 
 	
 }
@@ -58,6 +59,13 @@ OSGEarth::OSGEarth(QWidget *parent)
 OSGEarth::~OSGEarth()
 {
 	delete m_pDockWidget;
+}
+
+void OSGEarth::slotSetCatalog()
+{
+    QLabel* label = new QLabel();
+    label->setText(QString::fromLocal8Bit("显示所有对象内容"));
+    m_pDockWidget->setWidget(label);
 }
 
 void OSGEarth::slotLine()
@@ -310,7 +318,8 @@ void OSGEarth::slotSwitchMap()
 		QString("open map"),
 		"../earthFiles",
 		"earth (*.earth)");
-
+   
+    m_pViewer->init();
 	QApplication::setOverrideCursor(Qt::WaitCursor);
 	m_pViewer->setEarthFile(strEarthPath);
 	QApplication::setOverrideCursor(Qt::ArrowCursor);

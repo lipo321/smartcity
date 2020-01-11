@@ -1,4 +1,7 @@
 #include "drawline.h"
+#include "osgEarthSymbology/LineSymbol"
+#include "osgEarthSymbology/AltitudeSymbol"
+#include "osgEarthSymbology/Color"
 
 DrawLine::DrawLine(GraphicsView* view)
 : HandleAdapter(view)
@@ -11,33 +14,33 @@ DrawLine::DrawLine(GraphicsView* view)
 	m_vecPoint.clear();
 
 	// init style
-	m_lineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
-		->stroke()->color() = osgEarth::Symbology::Color::Yellow;
-	m_lineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
-		->stroke()->width() = 2.0;
-	m_lineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
-		->tessellation() = 20.0;
-	m_lineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
-		->clamping() = osgEarth::Symbology::AltitudeSymbol::CLAMP_TO_TERRAIN;
-	m_lineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
-		->technique() = osgEarth::Symbology::AltitudeSymbol::TECHNIQUE_MAP;
-	m_lineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
-		->verticalOffset() = 0.1;
+	//m_lineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
+	//	->stroke()->color() = osgEarth::Symbology::Color::Yellow;
+	//m_lineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
+	//	->stroke()->width() = 2.0;
+	//m_lineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
+	//	->tessellation() = 20.0;
+	//m_lineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
+	//	->clamping() = osgEarth::Symbology::AltitudeSymbol::CLAMP_TO_TERRAIN;
+	//m_lineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
+	//	->technique() = osgEarth::Symbology::AltitudeSymbol::TECHNIQUE_MAP;
+	//m_lineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
+	//	->verticalOffset() = 0.1;
 
-	m_stippleLineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
-		->stroke()->color() = osgEarth::Symbology::Color::Red;
-	m_stippleLineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
-		->stroke()->width() = 2.0;
-	m_stippleLineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
-		->tessellation() = 20.0;
-	m_stippleLineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
-		->clamping() = osgEarth::Symbology::AltitudeSymbol::CLAMP_TO_TERRAIN;
-	m_stippleLineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
-		->technique() = osgEarth::Symbology::AltitudeSymbol::TECHNIQUE_MAP;
-	m_stippleLineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
-		->verticalOffset() = 0.1;
-	m_stippleLineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
-		->stroke()->stipple() = 255;
+	//m_stippleLineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
+	//	->stroke()->color() = osgEarth::Symbology::Color::Red;
+	//m_stippleLineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
+	//	->stroke()->width() = 2.0;
+	//m_stippleLineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
+	//	->tessellation() = 20.0;
+	//m_stippleLineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
+	//	->clamping() = osgEarth::Symbology::AltitudeSymbol::CLAMP_TO_TERRAIN;
+	//m_stippleLineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
+	//	->technique() = osgEarth::Symbology::AltitudeSymbol::TECHNIQUE_MAP;
+	//m_stippleLineStyle.getOrCreate<osgEarth::Symbology::AltitudeSymbol>()
+	//	->verticalOffset() = 0.1;
+	//m_stippleLineStyle.getOrCreate<osgEarth::Symbology::LineSymbol>()
+	//	->stroke()->stipple() = 255;
 }
 
 DrawLine::~DrawLine()

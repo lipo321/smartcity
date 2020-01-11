@@ -2,7 +2,7 @@
 #include <QGraphicsScene>
 #include <QPaintEngine>
 #include <QtOpenGL/QGLWidget>
-
+#include "FeatureQueryTool.h"
 GraphicsView::GraphicsView(const QString& strFile, QWidget *parent)
 {
 	this->setScene(new QGraphicsScene);
@@ -22,6 +22,7 @@ void GraphicsView::release()
 	if (m_pSkyNode)
 	{
 		m_pSkyNode->removeChildren(0, m_pSkyNode->getNumChildren());
+        m_pSkyNode = nullptr;
 	}
 	if (m_pRoot)
 	{
@@ -33,7 +34,12 @@ void GraphicsView::release()
 		m_pMapNode = nullptr;
 		m_pMapSRS = nullptr;
 	}
-	m_pViewer = nullptr;
+    if (m_pViewer != nullptr)
+    {
+      //  delete m_pViewer;
+      //  m_pViewer = nullptr;
+    }
+	
 	m_pEarthManipulator = nullptr;
 }
 
@@ -109,6 +115,9 @@ void GraphicsView::setEarthFile(const QString& str)
 			m_pEarthManipulator = new osgEarth::Util::EarthManipulator;
 			m_pEarthManipulator->getSettings()->setMinMaxPitch(-90.0, -7.0);
 			m_pViewer->setCameraManipulator(m_pEarthManipulator);
+            //添加事件处理器
+            m_pViewer->addEventHandler(new FeatureQueryTool());
+
 			m_pViewer->addEventHandler(new osgViewer::StatsHandler);
 			m_pViewer->addEventHandler(new osgGA::StateSetManipulator(m_pViewer->getCamera()->getOrCreateStateSet()));
 			m_pViewer->getCamera()->addCullCallback(new osgEarth::Util::AutoClipPlaneCullCallback(m_pMapNode));
@@ -119,7 +128,7 @@ void GraphicsView::setEarthFile(const QString& str)
 			m_pGraphicsWindow = dynamic_cast<osgViewer::GraphicsWindow*>(
 				m_pViewer->getCamera()->getGraphicsContext());
 			// by lipo
-			osgEarth::Util::Viewpoint pv("",-71.076262, 42.34425, 0, 0, -90, 9000000);
+			osgEarth::Util::Viewpoint pv("",105, 33, 0, 0, -90, 9000000);
 			//m_pEarthManipulator->setViewpoint(osgEarth::Util::Viewpoint(105, 33, 0, 0, -90, 9000000));
 			m_pEarthManipulator->setViewpoint(pv);
 // 			m_pEarthManipulator->setViewpoint(osgEarth::Util::Viewpoint(
