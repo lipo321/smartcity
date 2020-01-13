@@ -25,6 +25,12 @@
     <Filter Include="learn4">
       <UniqueIdentifier>{cb511ee9-cded-4750-abee-00d9bbc9ed7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="learn5">
+      <UniqueIdentifier>{3611e874-bf9b-4b70-a118-f2d90a785a55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="learn6">
+      <UniqueIdentifier>{ae58d59e-6426-4b66-ac56-0c70940881df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -63,12 +69,15 @@
     <ClInclude Include="ObjectC.h">
       <Filter>learn4</Filter>
     </ClInclude>
+    <ClInclude Include="classF.h">
+      <Filter>learn5</Filter>
+    </ClInclude>
+    <ClInclude Include="testTemplate.h">
+      <Filter>learn6</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="learn.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="BaseClass.cpp">
@@ -97,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="ObjectC.cpp">
       <Filter>learn4</Filter>
+    </ClCompile>
+    <ClCompile Include="learn.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="classF.cpp">
+      <Filter>learn5</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
