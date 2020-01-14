@@ -6,41 +6,42 @@ import java.util.ArrayList;
 
 /**
  * 关系规则
+ *
  * @author 苏州中科蓝迪公司所有(c)2016-2021
  */
 public class RelationRule {
 
-	/**
-	 * @since 1.0.0
-	 */
-	private Relation relation;
+    /**
+     * @since 1.0.0
+     */
+    private Relation relation;
 
-	/**
-	 * @since 1.0.0
-	 */
-	private ArrayList rules;
+    /**
+     * @since 1.0.0
+     */
+    private ArrayList rules;
 
-	/**
-	 * @since 1.0.0
-	 * @roseuid 5A0B8B1400BC
-	 */
-	public RelationRule() {
-		rules = new ArrayList<>();
-	}
+    /**
+     * @roseuid 5A0B8B1400BC
+     * @since 1.0.0
+     */
+    public RelationRule() {
+        rules = new ArrayList<>();
+    }
 
-	public Relation getRelation() {
-		return relation;
-	}
+    public Relation getRelation() {
+        return relation;
+    }
 
-	public void setRelation(Relation relation) {
-		this.relation = relation;
-	}
+    public void setRelation(Relation relation) {
+        this.relation = relation;
+    }
 
-	public ArrayList getRules() {
-		return rules;
-	}
+    public ArrayList getRules() {
+        return rules;
+    }
 
-	public void setRules(ArrayList rules) {
-		this.rules = rules;
-	}
+    public void setRules(ArrayList rules) {
+        this.rules = rules;
+    }
 }

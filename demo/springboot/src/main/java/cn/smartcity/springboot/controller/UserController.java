@@ -18,9 +18,9 @@ public class UserController {
 
     @GetMapping("/test")
     @ResponseBody
-    public String test(){
-       // userTest.setName("236984");
-        return "我叫"+ userTest.getName()+"今年"+ userTest.getAge()+"岁";
+    public String test() {
+        // userTest.setName("236984");
+        return "我叫" + userTest.getName() + "今年" + userTest.getAge() + "岁";
     }
 
 }

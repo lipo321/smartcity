@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class StuctSObject {
 
-    public List<SObject> organizeSObject(){
+    public List<SObject> organizeSObject() {
         //1.创建具有关系的多粒度时空对象数据
         List<SObject> sObjects = new ArrayList<>();
 
@@ -24,7 +24,7 @@ public class StuctSObject {
         return sObjects;
     }
 
-    private void structOneSObject(SObject sObject){
+    private void structOneSObject(SObject sObject) {
         //1.设置对象id
         sObject.setId(1L);
         //2.设置对象的真实时间
@@ -42,7 +42,7 @@ public class StuctSObject {
         sObject.setNetwork(network);
     }
 
-    private void structNetwork(Network network){
+    private void structNetwork(Network network) {
         List<RNode> nodes = new ArrayList<>();
         RNode node = new RNode();
         structNode(node);
@@ -50,7 +50,7 @@ public class StuctSObject {
         network.setNodes(nodes);
     }
 
-    private void structNode(RNode node){
+    private void structNode(RNode node) {
         //1.设置节点的id
         node.setId(11L);
         //2.设置关联对象的id
@@ -66,7 +66,7 @@ public class StuctSObject {
         node.setEdge(edge);
     }
 
-    private void structEdge(REdge edge){
+    private void structEdge(REdge edge) {
         //1.设置边的id
         edge.setId(111L);
         //2.设置边的强度

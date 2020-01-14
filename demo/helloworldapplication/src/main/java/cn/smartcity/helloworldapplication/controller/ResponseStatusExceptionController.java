@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ResponseStatusExceptionController {
 
     @GetMapping("/resourceNotFoundException2")
-    public void throwException3(){
+    public void throwException3() {
         throw new ResourseNotFoundException2("Sorry,the resource not found!");
     }
 }

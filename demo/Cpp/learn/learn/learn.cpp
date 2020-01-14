@@ -18,6 +18,7 @@
 
 #include "testTemplate.h"
 
+#include "Person.h"
 using namespace std;
 
 double f(double x)
@@ -118,7 +119,7 @@ int _tmain(int argc, _TCHAR* argv[])
    classF cf;
     cout<<sum2(cf,2,5)<<endl;
     cout<<sum3(cf,2,5)<<endl;
-#else
+////////////////////////////////////////////////////
     int a[] = {1,2,3,4,5};
     vector<int> v1;
     printVector("v1",v1);
@@ -126,8 +127,11 @@ int _tmain(int argc, _TCHAR* argv[])
     {
         v1.push_back(j);
     }
-
+    int capacity = v1.capacity();
+    
     vector<int> v2(3,7);
+    capacity = v2.capacity();
+
 
     vector<int>::iterator i1 = v1.begin()+1;
     vector<int> v3(i1,i1+2);
@@ -165,6 +169,13 @@ int _tmain(int argc, _TCHAR* argv[])
     sort(v5.begin(),v5.end(),greater<int>());
     v5.front() = 2;
     return 0;
+#else
+    vector<Person> v6;
+    v6.push_back(Person("Gregg",25));
+    v6.push_back(Person("Ann",30));
+    v6.push_back(Person("Bill",30));
+
+    sort(v6.begin(),v6.end());
 
 #endif
 

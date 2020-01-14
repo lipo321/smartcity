@@ -62,7 +62,7 @@ public class Field extends AObject {
      * 单位
      */
     private UnitDict unit;
-    
+
     /**
      * 操作时间
      */
@@ -81,38 +81,38 @@ public class Field extends AObject {
     }
 
     public DTypeEnum getType() {
-		return type;
-	}
+        return type;
+    }
 
-	public void setType(DTypeEnum type) {
-		this.type = type;
-	}
+    public void setType(DTypeEnum type) {
+        this.type = type;
+    }
 
-	public String getDomain() {
-		return domain;
-	}
+    public String getDomain() {
+        return domain;
+    }
 
-	public void setDomain(String domain) {
-		this.domain = domain;
-	}
+    public void setDomain(String domain) {
+        this.domain = domain;
+    }
 
-	public Object getDefaultValue() {
-		return defaultValue;
-	}
+    public Object getDefaultValue() {
+        return defaultValue;
+    }
 
-	public void setDefaultValue(Object defaultValue) {
-		this.defaultValue = defaultValue;
-	}
+    public void setDefaultValue(Object defaultValue) {
+        this.defaultValue = defaultValue;
+    }
 
-	public UnitDict getUnit() {
-		return unit;
-	}
+    public UnitDict getUnit() {
+        return unit;
+    }
 
-	public void setUnit(UnitDict unit) {
-		this.unit = unit;
-	}
+    public void setUnit(UnitDict unit) {
+        this.unit = unit;
+    }
 
-	public String getCaption() {
+    public String getCaption() {
         return caption;
     }
 
@@ -153,16 +153,16 @@ public class Field extends AObject {
     }
 
     public Long getMtime() {
-		return mtime;
-	}
+        return mtime;
+    }
 
-	public void setMtime(Long mtime) {
-		this.mtime = mtime;
-	}
+    public void setMtime(Long mtime) {
+        this.mtime = mtime;
+    }
 
-	@Override
+    @Override
     public String toString() {
         return getId().toString();
     }
-    
+
 }

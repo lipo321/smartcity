@@ -14,6 +14,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
  * redis配置类
+ *
  * @author lipoGiser
  * @date 2019/11/15 9:09
  * @Version 0.1
@@ -24,13 +25,14 @@ public class RedisConfig extends CachingConfigurerSupport {
 
     /**
      * redisTemplate相关配置
+     *
      * @param factory
      * @return
      */
     @Bean
     @SuppressWarnings("all")
-    public RedisTemplate<String,Object> redisTemplate(RedisConnectionFactory factory){
-        RedisTemplate<String,Object> template = new RedisTemplate<String, Object>();
+    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory factory) {
+        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
         //配置连接工厂
         template.setConnectionFactory(factory);
 

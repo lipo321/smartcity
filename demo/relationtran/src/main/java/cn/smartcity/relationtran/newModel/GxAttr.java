@@ -23,7 +23,7 @@ public class GxAttr {
     /**
      * 字段id
      */
-    private Long fid;
+    private Long   fid;
     /**
      * 属性名称
      */

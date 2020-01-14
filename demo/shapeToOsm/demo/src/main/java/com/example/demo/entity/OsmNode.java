@@ -13,8 +13,8 @@ import lombok.Setter;
 @Setter
 public class OsmNode extends OsmGraph {
 
-    private static final long serialVersionUID = 2741667923818179815L;
-    private String type;
+    private static final long   serialVersionUID = 2741667923818179815L;
+    private              String type;
 
     private Long id;
 

@@ -72,7 +72,7 @@ public class OType extends AObject {
     /**
      * 位置
      */
-    private Integer    placedes;
+    private Integer placedes;
 
     //private EditTypeEnum editType = EditTypeEnum.base;
 
@@ -83,7 +83,7 @@ public class OType extends AObject {
     public OType() {
         formStyles = new FormStyles();
         connectors = new Connectors();
-     //   models = new Models();
+        //   models = new Models();
         fields = new Fields();
     }
 
@@ -202,36 +202,36 @@ public class OType extends AObject {
     /**
      * 添加字段集合
      */
-    public void addFields(List<Field> fields){
-        if (this.fields != null && this.fields.getFields() != null){
+    public void addFields(List<Field> fields) {
+        if (this.fields != null && this.fields.getFields() != null) {
             this.fields.addFields(fields);
         }
     }
 
 
-
     /**
      * 添加形态样式集合
      */
-    public void addFormStyles(List<FormStyle> formStyles){
-        if (this.formStyles != null && this.formStyles.getStyles() != null){
+    public void addFormStyles(List<FormStyle> formStyles) {
+        if (this.formStyles != null && this.formStyles.getStyles() != null) {
             this.formStyles.addStyles(formStyles);
         }
     }
 
     /**
      * 添加样式
+     *
      * @param formStyle
      */
-    public void addStyle(FormStyle formStyle){
+    public void addStyle(FormStyle formStyle) {
         this.formStyles.addStyle(formStyle);
     }
 
     /**
      * 添加连接关系集合
      */
-    public void addConnectors(List<Connector> connectors){
-        if (this.connectors != null && this.connectors.getConnectors() != null){
+    public void addConnectors(List<Connector> connectors) {
+        if (this.connectors != null && this.connectors.getConnectors() != null) {
             this.connectors.addConnectors(connectors);
         }
     }

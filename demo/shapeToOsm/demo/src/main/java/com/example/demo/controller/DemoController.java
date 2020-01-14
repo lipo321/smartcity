@@ -19,6 +19,6 @@ public class DemoController {
 
     @GetMapping("/test")
     public String demoTest(@RequestParam("name") String name) {
-        return demoService.aopDemo(name,1);
+        return demoService.aopDemo(name, 1);
     }
 }

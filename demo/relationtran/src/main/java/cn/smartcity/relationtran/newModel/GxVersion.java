@@ -11,8 +11,8 @@ import java.util.List;
  * @date created on 16:18 2019/10/28
  */
 public class GxVersion {
-    private GxNode from;
-    private GxNode to;
+    private GxNode              from;
+    private GxNode              to;
     /**
      * <关系id，关系历史>
      */

@@ -11,13 +11,13 @@ import java.util.stream.Collectors;
  * @Version 0.1
  */
 public enum EGxRelationState {
-    KEEP(0,"关系开始"),
-    BREAK(1,"关系结束");
+    KEEP(0, "关系开始"),
+    BREAK(1, "关系结束");
 
     private final Integer code;
-    private final String content;
+    private final String  content;
 
-    EGxRelationState(Integer code,String content){
+    EGxRelationState(Integer code, String content) {
         this.code = code;
         this.content = content;
     }
@@ -33,6 +33,7 @@ public enum EGxRelationState {
 
     /**
      * 解析code为EGxRelationState
+     *
      * @param code code值
      * @return EGxRelationState 对应枚举
      */

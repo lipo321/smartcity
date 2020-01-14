@@ -14,7 +14,7 @@ public class GxNetwork {
     /**
      * 工程id
      */
-    private Long prjId;
+    private Long            prjId;
     /**
      * 关系网
      */

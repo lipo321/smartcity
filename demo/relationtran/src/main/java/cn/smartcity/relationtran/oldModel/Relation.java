@@ -18,73 +18,73 @@ public class Relation extends AObject {
     /**
      * 关系映射类型，分为一对一(1)、一对多(2)、多对一(3)、多对多(4)
      */
-	private RelationEnum mappingType = RelationEnum.ONETOONE;
+    private RelationEnum mappingType = RelationEnum.ONETOONE;
 
     /**
      * 描述关系的字段
      */
-	private Fields fields;
+    private Fields fields;
 
     /**
      * 关联行为模型
      */
-	//public Model model;
+    //public Model model;
 
     /**
      * 关系创建者
      */
-	private User user;
+    private User user;
 
     /**
      * 修改时间
      */
-	private Long mtime;
-	/**
-	 * 类别码
-	 */
-	private String code;
+    private Long   mtime;
+    /**
+     * 类别码
+     */
+    private String code;
 
-	public Relation() {
-		fields = new Fields();
-	}
+    public Relation() {
+        fields = new Fields();
+    }
 
-	public RelationEnum getMappingType() {
-		return mappingType;
-	}
+    public RelationEnum getMappingType() {
+        return mappingType;
+    }
 
-	public void setOor(RelationEnum oor) {
-		this.mappingType = oor;
-	}
+    public void setOor(RelationEnum oor) {
+        this.mappingType = oor;
+    }
 
-	public Fields getFields() {
-		return fields;
-	}
+    public Fields getFields() {
+        return fields;
+    }
 
-	public void setFields(Fields fields) {
-		this.fields = fields;
-	}
+    public void setFields(Fields fields) {
+        this.fields = fields;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public Long getMtime() {
-		return mtime;
-	}
+    public Long getMtime() {
+        return mtime;
+    }
 
-	public void setMtime(Long mtime) {
-		this.mtime = mtime;
-	}
+    public void setMtime(Long mtime) {
+        this.mtime = mtime;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 }

@@ -10,12 +10,13 @@ import java.util.Map;
 
 /**
  * 关系对象
+ *
  * @author 苏州中科蓝迪公司所有(c)2016-2021
  */
 public class RObject {
-    private long id;
-    private Long relatedObjectId;
-    private String label;
+    private long                id;
+    private Long                relatedObjectId;
+    private String              label;
     private Map<String, Object> properties;
 
 

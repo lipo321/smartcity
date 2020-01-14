@@ -36,6 +36,7 @@ public class Connectors {
 
     /**
      * 根据集合列表构建连接关系
+     *
      * @param connectorList 关系列表
      * @return Connectors
      */
@@ -65,17 +66,17 @@ public class Connectors {
         this.connectorIds = toList();
     }
 
-    public void addConnectors(List<Connector> connectors){
+    public void addConnectors(List<Connector> connectors) {
         for (Connector connector : connectors) {
-            if (!contain(connector)){
+            if (!contain(connector)) {
                 this.connectors.add(connector);
             }
         }
     }
 
-    private boolean contain(Connector connector){
+    private boolean contain(Connector connector) {
         for (Connector connector1 : connectors) {
-            if (connector1.getId().equals(connector.getId())){
+            if (connector1.getId().equals(connector.getId())) {
                 return true;
             }
         }
@@ -84,6 +85,7 @@ public class Connectors {
 
     /**
      * 將字段集合转变成字段ID列表
+     *
      * @return List<Long>
      */
     public List<Long> toList() {
@@ -96,6 +98,7 @@ public class Connectors {
 
     /**
      * 將字段集合转变成字符串
+     *
      * @return String
      */
     @Override

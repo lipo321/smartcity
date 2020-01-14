@@ -19,130 +19,133 @@ import java.util.Map;
  */
 
 public enum FormEnum {
-	/**
-	 * 位置形态
-	 */
-	NULL("NULL",-1),
-	/**
-	 * 几何形态
-	 */
+    /**
+     * 位置形态
+     */
+    NULL("NULL", -1),
+    /**
+     * 几何形态
+     */
     GEOMETRY("Geometry", 20),
-	/**
-	 * 点形态
-	 */
+    /**
+     * 点形态
+     */
     POINT("Point", 21),
-	/**
-	 * 线形态
-	 */
+    /**
+     * 线形态
+     */
     LINESTRING("Linestring", 22),
-	/**
-	 * 简单多边形
-	 */
+    /**
+     * 简单多边形
+     */
     POLYGON("Polygon", 23),
 
-	/**
-	 * 地形
-	 */
+    /**
+     * 地形
+     */
     GEOGRAPHY("Geography", 30),
-	/**
-	 * 等高线
-	 */
-	ISOHYPSE("Isohypse", 31),
-	/**
-	 * dem
-	 */
+    /**
+     * 等高线
+     */
+    ISOHYPSE("Isohypse", 31),
+    /**
+     * dem
+     */
     DEM("Dem", 32),
-	/**
-	 * tin
-	 */
-	TIN("Tin", 33),
-	/**
-	 * bim
-	 */
-	BIM("Bim", 40),
-	/**
-	 * 模型
-	 */
-	MODEL("Model", 50),
-	/**
-	 * 球体
-	 */
-    SHAPEBLOCK("ShapeBlock",60),
-	/**
-	 * 椭球
-	 */
-	ELLIPSOID("Ellipsoid", 61),
-	/**
-	 * 三角面片
-	 */
-	TRIANGULARMESH("TriangularMesh", 62);
-	
-    private final int value;
+    /**
+     * tin
+     */
+    TIN("Tin", 33),
+    /**
+     * bim
+     */
+    BIM("Bim", 40),
+    /**
+     * 模型
+     */
+    MODEL("Model", 50),
+    /**
+     * 球体
+     */
+    SHAPEBLOCK("ShapeBlock", 60),
+    /**
+     * 椭球
+     */
+    ELLIPSOID("Ellipsoid", 61),
+    /**
+     * 三角面片
+     */
+    TRIANGULARMESH("TriangularMesh", 62);
+
+    private final int    value;
     private final String name;
 
     FormEnum(String name, int value) {
         this.name = name;
         this.value = value;
     }
-    
+
     public static List<Map<String, Object>> enumList() {
-    	List<Map<String, Object>> list = new ArrayList<>();
-    	for(FormEnum formEnum : FormEnum.values()){
-    		Map<String, Object> map = new HashMap<>();
-    		map.put("name", formEnum.getName());
-    		map.put("value", formEnum.getValue());
-    		list.add(map);
-    	}
-    	return list;
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (FormEnum formEnum : FormEnum.values()) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("name", formEnum.getName());
+            map.put("value", formEnum.getValue());
+            list.add(map);
+        }
+        return list;
     }
-    
-    public static List<Map<String, Object>> enumList(int startNum, int endNum){
-    	List<Map<String, Object>> list = new ArrayList<>();
-    	for(FormEnum formEnum : FormEnum.values()){
-    		if(formEnum.getValue() >= startNum && formEnum.getValue() < endNum) {
-    			Map<String, Object> map = new HashMap<>();
-        		map.put("name", formEnum.getName());
-        		map.put("value", formEnum.getValue());
-        		list.add(map);
-    		}
-    	}
-    	return list;
+
+    public static List<Map<String, Object>> enumList(int startNum, int endNum) {
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (FormEnum formEnum : FormEnum.values()) {
+            if (formEnum.getValue() >= startNum && formEnum.getValue() < endNum) {
+                Map<String, Object> map = new HashMap<>();
+                map.put("name", formEnum.getName());
+                map.put("value", formEnum.getValue());
+                list.add(map);
+            }
+        }
+        return list;
     }
-    
+
     /**
      * 根据value获取枚举对象
+     *
      * @param value
      * @return
      */
     @JsonCreator
-    public static FormEnum getEnum(int value){
-    	for(FormEnum formEnum : FormEnum.values()){
-    		if(formEnum.getValue() == value){
-    			return formEnum;
-    		}
-    	}
-    	return null;
+    public static FormEnum getEnum(int value) {
+        for (FormEnum formEnum : FormEnum.values()) {
+            if (formEnum.getValue() == value) {
+                return formEnum;
+            }
+        }
+        return null;
     }
-	/**
-	 * 根据name获取枚举对象
-	 * @param name
-	 * @return
-	 */
-	public static FormEnum getEnum(String name){
-		for(FormEnum formEnum : FormEnum.values()){
-			if(formEnum.getName().equals(name) ){
-				return formEnum;
-			}
-		}
-		return null;
-	}
+
+    /**
+     * 根据name获取枚举对象
+     *
+     * @param name
+     * @return
+     */
+    public static FormEnum getEnum(String name) {
+        for (FormEnum formEnum : FormEnum.values()) {
+            if (formEnum.getName().equals(name)) {
+                return formEnum;
+            }
+        }
+        return null;
+    }
 
     @JsonValue
-	public int getValue() {
-		return value;
-	}
+    public int getValue() {
+        return value;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 }

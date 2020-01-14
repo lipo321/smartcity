@@ -16,122 +16,121 @@ import java.util.List;
  * @version 1.0.0
  * @brief 数据访问引擎核心库
  * @note 修订历史： 1、giszyj@126.com于2017年10月25日设计并构建初始版本v1.0.0
- *       2、xhli@qq.com于2018年5月10日将children类型改为List
- *       <Long>(children在返回时需要按照指定顺序，hashTable无法维持原有顺序)
- *
+ * 2、xhli@qq.com于2018年5月10日将children类型改为List
+ * <Long>(children在返回时需要按照指定顺序，hashTable无法维持原有顺序)
  */
 public class OBase extends AObject {
 
-	/**
-	 * 信息唯一标识
-	 */
-	private Long uuid;
+    /**
+     * 信息唯一标识
+     */
+    private Long uuid;
 
-	/**
-	 * 数据所来源对象标识
-	 */
-	private Long from;
+    /**
+     * 数据所来源对象标识
+     */
+    private Long from;
 
 
     /**
      * 对象属于哪一个时空域
      */
-	private Long sdomain;
+    private Long sdomain;
 
-	/**
-	 * 子对象
-	 */
-	@JsonDeserialize(using = ChildrenDeserializer.class)
-	private List<OBase> children = new ArrayList<>();
+    /**
+     * 子对象
+     */
+    @JsonDeserialize(using = ChildrenDeserializer.class)
+    private List<OBase> children = new ArrayList<>();
 
-	/**
-	 * 对象的父对象
-	 */
-	@JsonDeserialize(using = ParentsDeserializer.class)
-	@JsonSerialize(using = ParentsSerialize.class)
-	private List<OBase> parents = new ArrayList<>();
+    /**
+     * 对象的父对象
+     */
+    @JsonDeserialize(using = ParentsDeserializer.class)
+    @JsonSerialize(using = ParentsSerialize.class)
+    private List<OBase> parents = new ArrayList<>();
 
-	/**
-	 * 创建版本
-	 */
-	private Version cversion;
-	/**
-	 * 消亡版本
-	 */
-	private Version dversion;
+    /**
+     * 创建版本
+     */
+    private Version cversion;
+    /**
+     * 消亡版本
+     */
+    private Version dversion;
 
-	/**
-	 * 当前版本
-	 */
-	private Version version;
+    /**
+     * 当前版本
+     */
+    private Version version;
 
-	/**
-	 * @roseuid 59EF00FC0331
-	 */
+    /**
+     * @roseuid 59EF00FC0331
+     */
 
-	public OBase(Long uuid) {
-		this.uuid = uuid;
-	}
+    public OBase(Long uuid) {
+        this.uuid = uuid;
+    }
 
-	public OBase() {
+    public OBase() {
 
-	}
+    }
 
-	public Long getUuid() {
-		return uuid;
-	}
+    public Long getUuid() {
+        return uuid;
+    }
 
-	public void setUuid(Long uuid) {
-		this.uuid = uuid;
-	}
+    public void setUuid(Long uuid) {
+        this.uuid = uuid;
+    }
 
-	public Long getFrom() {
-		return from;
-	}
+    public Long getFrom() {
+        return from;
+    }
 
-	public void setFrom(Long from) {
-		this.from = from;
-	}
+    public void setFrom(Long from) {
+        this.from = from;
+    }
 
-	public List<OBase> getChildren() {
-		return children;
-	}
+    public List<OBase> getChildren() {
+        return children;
+    }
 
-	public void setChildren(List<OBase> children) {
-		this.children = children;
-	}
+    public void setChildren(List<OBase> children) {
+        this.children = children;
+    }
 
-	public List<OBase> getParents() {
-		return parents;
-	}
+    public List<OBase> getParents() {
+        return parents;
+    }
 
-	public void setParents(List<OBase> parents) {
-		this.parents = parents;
-	}
+    public void setParents(List<OBase> parents) {
+        this.parents = parents;
+    }
 
-	public Version getCversion() {
-		return cversion;
-	}
+    public Version getCversion() {
+        return cversion;
+    }
 
-	public void setCversion(Version cversion) {
-		this.cversion = cversion;
-	}
+    public void setCversion(Version cversion) {
+        this.cversion = cversion;
+    }
 
-	public Version getDversion() {
-		return dversion;
-	}
+    public Version getDversion() {
+        return dversion;
+    }
 
-	public void setDversion(Version dversion) {
-		this.dversion = dversion;
-	}
+    public void setDversion(Version dversion) {
+        this.dversion = dversion;
+    }
 
-	public Version getVersion() {
-		return version;
-	}
+    public Version getVersion() {
+        return version;
+    }
 
-	public void setVersion(Version version) {
-		this.version = version;
-	}
+    public void setVersion(Version version) {
+        this.version = version;
+    }
 
     public Long getSdomain() {
         return sdomain;
@@ -142,12 +141,12 @@ public class OBase extends AObject {
     }
 
     public void setParentsByIDs(List<Long> parentsIds) {
-		List<OBase> parents = new ArrayList<>();
-		for (Long parentId : parentsIds) {
-			OBase obase = new OBase();
-			obase.setId(parentId);
-			parents.add(obase);
-		}
-		this.parents = parents;
-	}
+        List<OBase> parents = new ArrayList<>();
+        for (Long parentId : parentsIds) {
+            OBase obase = new OBase();
+            obase.setId(parentId);
+            parents.add(obase);
+        }
+        this.parents = parents;
+    }
 }

@@ -2,11 +2,12 @@ package cn.smartcity.relationtran.oldModel.attribute;
 
 /**
  * 对象属性描述
- * @author  zffp
+ *
+ * @author zffp
  * @date
  */
-public  class Attribute {
-    private Long fid;
+public class Attribute {
+    private Long   fid;
     private String name;
     private Object value;
 

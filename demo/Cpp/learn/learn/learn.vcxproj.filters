@@ -31,6 +31,12 @@
     <Filter Include="learn6">
       <UniqueIdentifier>{ae58d59e-6426-4b66-ac56-0c70940881df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="learn7">
+      <UniqueIdentifier>{d42c938c-b978-47da-bddc-1e0d1b6a243f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="learn8">
+      <UniqueIdentifier>{320a7b98-b737-428f-bc31-fb222b56165a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
@@ -75,6 +81,12 @@
     <ClInclude Include="testTemplate.h">
       <Filter>learn6</Filter>
     </ClInclude>
+    <ClInclude Include="Person.h">
+      <Filter>learn7</Filter>
+    </ClInclude>
+    <ClInclude Include="Personal.h">
+      <Filter>learn8</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -112,6 +124,12 @@
     </ClCompile>
     <ClCompile Include="classF.cpp">
       <Filter>learn5</Filter>
+    </ClCompile>
+    <ClCompile Include="Person.cpp">
+      <Filter>learn7</Filter>
+    </ClCompile>
+    <ClCompile Include="Personal.cpp">
+      <Filter>learn8</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

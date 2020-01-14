@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class DemoService {
-    public String aopDemo(String param1,Integer param2) {
+    public String aopDemo(String param1, Integer param2) {
         return "aopDemo!" + param1 + param2;
     }
 }

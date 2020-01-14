@@ -4,7 +4,9 @@ package cn.smartcity.relationtran.oldModel;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 
-/** 节点
+/**
+ * 节点
+ *
  * @author 苏州中科蓝迪公司所有(c)2016-2021
  */
 public class RNode extends RObject {

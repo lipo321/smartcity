@@ -10,13 +10,13 @@ import com.example.demo.component.style.ComponentStyle;
  */
 abstract class AbstractDefaultComponent {
     public static int CURRENT_HEIGHT = 0;
-    public static int CONTENT_WIDTH = 0;
+    public static int CONTENT_WIDTH  = 0;
     public static int CONTENT_HEIGHT = 0;
-    public static int CURRENT_PAGE = 1;
-    public static int TOTAL_PAGE = 0;
+    public static int CURRENT_PAGE   = 1;
+    public static int TOTAL_PAGE     = 0;
 
-    public static String[] COLUMN_NAME = {"序号", "", ""};
-    public static String[][] ROW_DATA = {
+    public static String[]   COLUMN_NAME = {"序号", "", ""};
+    public static String[][] ROW_DATA    = {
             {"1", "", ""},
             {"2", "", ""},
             {"3", "", ""},
@@ -29,8 +29,8 @@ abstract class AbstractDefaultComponent {
             {"10", "", ""}
     };
 
-    public static String[] FILE_ENCODING = {"ANSI", "UTF-8", "UTF-16", "UTF-32", "GBK", "GBK2312", "US-ASCII", "ISO-8859-1"};
-    public static String[] OBJECT_FIELD = {""};
+    public static String[] FILE_ENCODING     = {"ANSI", "UTF-8", "UTF-16", "UTF-32", "GBK", "GBK2312", "US-ASCII", "ISO-8859-1"};
+    public static String[] OBJECT_FIELD      = {""};
     public static String[] COORDINATE_SYSTEM = {"WGS84"};
 
     public static final int DEFAULT_TEXTAREA = inputWidth(2, 2) - buttonWidth(2);

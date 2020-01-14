@@ -17,25 +17,25 @@ public class Version {
     /**
      * 版本ID
      */
-    private Long vid;
+    private Long         vid;
     /**
      * 版本描述信息
      */
-    private String msg;
+    private String       msg;
     /**
      * 操作类型
      * 说明：该操作是所有相关Action中operation的或
      * 例如：值为ADDING|MODIFY
      */
-    private Integer operate;
+    private Integer      operate;
     /**
      * 创建时间
      */
-    private Long vtime;
+    private Long         vtime;
     /**
      * 所基于的版本号
      */
-    private Long rvid;
+    private Long         rvid;
     /**
      * 操作动作集合
      * 注意：只有在查询某个版本所包含的Action时才有值，否则都为空
@@ -44,7 +44,7 @@ public class Version {
     /**
      * 所属用户
      */
-    private User user;
+    private User         user;
 
     /**
      * @roseuid 59EEF58902D8

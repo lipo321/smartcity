@@ -18,29 +18,29 @@ import java.util.ArrayList;
  */
 public class EWKTReader {
 
-    private static final String EMPTY = "EMPTY";
-    private static final String COMMA = ",";
-    private static final String L_PAREN = "(";
-    private static final String R_PAREN = ")";
-    private static final String NAN_SYMBOL = "NaN";
-    private static final String Z = "Z";
-    private static final String M = "M";
-    private static final String ZM = "ZM";
-    private static final String POINT = "POINT";
-    private static final String LINESTRING = "LINESTRING";
-    private static final String LINEARRING = "LINEARRING";
-    private static final String POLYGON = "POLYGON";
-    private static final String MULTI_POINT = "MULTIPOINT";
-    private static final String MULTI_LINESTRING = "MULTILINESTRING";
-    private static final String MULTI_POLYGON = "MULTIPOLYGON";
+    private static final String EMPTY               = "EMPTY";
+    private static final String COMMA               = ",";
+    private static final String L_PAREN             = "(";
+    private static final String R_PAREN             = ")";
+    private static final String NAN_SYMBOL          = "NaN";
+    private static final String Z                   = "Z";
+    private static final String M                   = "M";
+    private static final String ZM                  = "ZM";
+    private static final String POINT               = "POINT";
+    private static final String LINESTRING          = "LINESTRING";
+    private static final String LINEARRING          = "LINEARRING";
+    private static final String POLYGON             = "POLYGON";
+    private static final String MULTI_POINT         = "MULTIPOINT";
+    private static final String MULTI_LINESTRING    = "MULTILINESTRING";
+    private static final String MULTI_POLYGON       = "MULTIPOLYGON";
     private static final String GEOMETRY_COLLECTION = "GEOMETRYCOLLECTION";
-    private static final String BBOX = "BBOX";
+    private static final String BBOX                = "BBOX";
 
 
     private GeometryFactory geometryFactory;
-    private PrecisionModel precisionModel;
+    private PrecisionModel  precisionModel;
     private StreamTokenizer tokenizer;
-    private Integer osmType;
+    private Integer         osmType;
 
     /**
      * Not yet used (useful if we want to read Z, M and ZM WKT)

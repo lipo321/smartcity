@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+
 /**
  * @author lipo@126.com
  * @date 2019年7月10日

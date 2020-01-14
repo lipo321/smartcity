@@ -25,21 +25,26 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class DomeAspect {
-    /** service 切点 */
+    /**
+     * service 切点
+     */
     @Pointcut("execution(* com.example.demo.service.*.*(..))")
-    public void graphServiceAll(){
+    public void graphServiceAll() {
     }
 
-    /** controller 切点 */
+    /**
+     * controller 切点
+     */
     @Pointcut(" execution(* com.example.demo.controller.*.*(..))")
-    public void graphControllerAll(){
+    public void graphControllerAll() {
     }
 
 
-
-    /** 环绕切法 */
+    /**
+     * 环绕切法
+     */
     @Around("graphServiceAll()")
-    public Object graphServiceAllAround(ProceedingJoinPoint joinPoint) throws Throwable{
+    public Object graphServiceAllAround(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("**********【graphAllStart】**********");
 
         log.info("==========【graphAllBefore】==========");
@@ -52,8 +57,9 @@ public class DomeAspect {
     }
 
 
-
-    /** 环绕切法切controller */
+    /**
+     * 环绕切法切controller
+     */
     @Around("graphControllerAll()")
     public Object graphControllerAround(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("**********【controllerStart】**********");
@@ -70,13 +76,11 @@ public class DomeAspect {
     }
 
 
-
-
     private void methodInfoLog(JoinPoint joinPoint) {
         Signature signature = joinPoint.getSignature();
         log.info("【method】：{}", signature.getName());
         log.info("【package】: {}", signature.getDeclaringTypeName());
-        log.info("【type】: {}",signature.getDeclaringType());
+        log.info("【type】: {}", signature.getDeclaringType());
 
         MethodSignature methodSignature = (MethodSignature) signature;
         String[] strings = methodSignature.getParameterNames();

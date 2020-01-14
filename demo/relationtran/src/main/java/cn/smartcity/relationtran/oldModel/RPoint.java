@@ -11,11 +11,11 @@ public class RPoint {
     private Double y;
     private Double z;
 
-    public  RPoint(){
+    public RPoint() {
 
     }
 
-    public  RPoint(double x, double y,double z){
+    public RPoint(double x, double y, double z) {
         this.x = x;
         this.y = y;
         this.z = z;

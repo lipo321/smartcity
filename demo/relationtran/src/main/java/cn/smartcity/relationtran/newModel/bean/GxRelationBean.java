@@ -20,7 +20,7 @@ public class GxRelationBean {
     private Long rid;
 
     private Long time;
-    
+
 
     public GxRelationBean() {
     }

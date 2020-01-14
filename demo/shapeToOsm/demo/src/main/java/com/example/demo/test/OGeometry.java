@@ -1,6 +1,7 @@
 package com.example.demo.test;
 
 import com.vividsolutions.jts.geom.Geometry;
+import com.vividsolutions.jts.geom.Point;
 import onegis.psde.form.Form;
 
 /**
@@ -10,6 +11,7 @@ import onegis.psde.form.Form;
 public abstract class OGeometry extends Geometry {
 
     private static final long serialVersionUID = 8863622679187376702L;
+
 
     // 以下这些是JTS内置SORTINDEX类型
     // static final int SORTINDEX_POINT = 0;
@@ -26,9 +28,9 @@ public abstract class OGeometry extends Geometry {
      */
     public static final int SORTINDEX_EXT = 20;
 
-    public static final int SORTINDEX_EXT_NODE = 21;
-    public static final int SORTINDEX_EXT_WAY = 22;
-    public static final int SORTINDEX_EXT_RELATION = 23;
+    public static final int SORTINDEX_EXT_NODE      = 21;
+    public static final int SORTINDEX_EXT_WAY       = 22;
+    public static final int SORTINDEX_EXT_RELATION  = 23;
     public static final int SORTINDEX_EXT_CLOSEDWAY = 24;
 
     public static final int SORTINDEX_BBOX = 30;

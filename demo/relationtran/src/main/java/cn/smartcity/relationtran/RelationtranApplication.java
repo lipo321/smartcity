@@ -30,7 +30,7 @@ public class RelationtranApplication {
         }
 
         StructNetwork structNetwork = new StructNetwork();
-        GxNetwork network =  structNetwork.getNetwork(sObjects);
+        GxNetwork network = structNetwork.getNetwork(sObjects);
 
         try {
             String networkString = JsonUtils.objectToJson(network);
@@ -49,12 +49,9 @@ public class RelationtranApplication {
     }
 
 
-
-    private void transform(){
+    private void transform() {
 
     }
-
-
 
 
 }

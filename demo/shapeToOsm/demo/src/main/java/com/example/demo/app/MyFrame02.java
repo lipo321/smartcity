@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 /**
  * 将几何shape要素转换成OsmObject
  *
@@ -16,7 +17,7 @@ public class MyFrame02 extends JFrame {
         new MyFrame02();
     }
 
-    JTextField txtName = new JTextField();
+    JTextField     txtName     = new JTextField();
     JPasswordField txtPassWord = new JPasswordField();
 
     JButton loginButton = new JButton("登录");

@@ -5,7 +5,8 @@ import java.util.List;
 
 /**
  * 属性集合
- * @author  zffp
+ *
+ * @author zffp
  */
 public class Attributes {
 
@@ -37,7 +38,6 @@ public class Attributes {
     public void setAttributeList(List<Attribute> attributeList) {
         this.attributeList = attributeList;
     }
-
 
 
 }

@@ -21,15 +21,15 @@ public enum FormStyleTypeEnum {
     /**
      * sld样式
      */
-	sld("sld", 1),
+    sld("sld", 1),
     /**
      * sld-css样式
      */
-	SldCss("Sld-Css", 2),
+    SldCss("Sld-Css", 2),
     /**
      * mapbox-css样式
      */
-	MapboxCss("Mapbox-Css", 3),
+    MapboxCss("Mapbox-Css", 3),
     /**
      * 模型
      */
@@ -48,26 +48,26 @@ public enum FormStyleTypeEnum {
         this.value = value;
 
     }
-    
+
     public static List<Map<String, Object>> enumList() {
-    	List<Map<String, Object>> list = new ArrayList<>();
-    	for(FormStyleTypeEnum formStyleTypeEnum : FormStyleTypeEnum.values()){
-    		Map<String, Object> map = new HashMap<>();
-    		map.put("name", formStyleTypeEnum.getName());
-    		map.put("value", formStyleTypeEnum.getValue());
-    		list.add(map);
-    	}
-    	return list;
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (FormStyleTypeEnum formStyleTypeEnum : FormStyleTypeEnum.values()) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("name", formStyleTypeEnum.getName());
+            map.put("value", formStyleTypeEnum.getValue());
+            list.add(map);
+        }
+        return list;
     }
-    
+
     @JsonCreator
-    public static FormStyleTypeEnum getEnum(int value){
-    	for(FormStyleTypeEnum formStyleTypeEnum : FormStyleTypeEnum.values()){
-    		if(formStyleTypeEnum.getValue() == value){
-    			return formStyleTypeEnum;
-    		}
-    	}
-    	return null;
+    public static FormStyleTypeEnum getEnum(int value) {
+        for (FormStyleTypeEnum formStyleTypeEnum : FormStyleTypeEnum.values()) {
+            if (formStyleTypeEnum.getValue() == value) {
+                return formStyleTypeEnum;
+            }
+        }
+        return null;
     }
 
     public String getName() {

@@ -19,7 +19,7 @@ public class OsmObject implements Serializable {
 
     private static final long serialVersionUID = 16207088070825700L;
     //对象id
-    private int id;
+    private              int  id;
 
     //对象类型
     private String name;
@@ -41,7 +41,7 @@ public class OsmObject implements Serializable {
 //   private String cTime;
 //   private String uTime;
 //
-    private OsmEntity entity;
+    private OsmEntity           entity;
 
     private ObejctType type;
 }

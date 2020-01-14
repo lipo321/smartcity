@@ -22,7 +22,7 @@ public class GxRelation {
     /**
      * 关系类id
      */
-    private Long typeId;
+    private Long   typeId;
     /**
      * 关系类名称
      */
@@ -70,7 +70,7 @@ public class GxRelation {
     }
 
     public GxRelationBean build() {
-        return new GxRelationBean(this.rid,this.uTime);
+        return new GxRelationBean(this.rid, this.uTime);
     }
 
 

@@ -43,12 +43,12 @@ public class User {
      * 用户唯一标识
      */
     private String uid;
-    
+
     /**
      * 用户昵称
      */
     private String userNickName;
-    
+
     /**
      * 用户头像
      */
@@ -108,19 +108,19 @@ public class User {
         this.level = level;
     }
 
-	public String getUserNickName() {
-		return userNickName;
-	}
+    public String getUserNickName() {
+        return userNickName;
+    }
 
-	public void setUserNickName(String userNickName) {
-		this.userNickName = userNickName;
-	}
+    public void setUserNickName(String userNickName) {
+        this.userNickName = userNickName;
+    }
 
-	public String getUserAvatar() {
-		return userAvatar;
-	}
+    public String getUserAvatar() {
+        return userAvatar;
+    }
 
-	public void setUserAvatar(String userAvatar) {
-		this.userAvatar = userAvatar;
-	}
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
+    }
 }

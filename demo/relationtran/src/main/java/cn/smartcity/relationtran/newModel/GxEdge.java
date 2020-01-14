@@ -52,7 +52,7 @@ public class GxEdge {
 
     public GxRelation build() {
         GxRelation gxRelation = new GxRelation();
-        BeanUtils.copyProperties(this,gxRelation);
+        BeanUtils.copyProperties(this, gxRelation);
         return gxRelation;
 
     }

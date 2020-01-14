@@ -20,29 +20,29 @@ import java.util.Map;
  */
 public enum DTypeEnum {
 
-	/**
-	 * SHORT
-	 */
+    /**
+     * SHORT
+     */
     SHORT("short", 1),
-	/**
-	 *LONG
-	 */
+    /**
+     * LONG
+     */
     LONG("long", 2),
-	/**
-	 *FLOAT
-	 */
+    /**
+     * FLOAT
+     */
     FLOAT("float", 3),
-	/**
-	 *DOUBLE
-	 */
+    /**
+     * DOUBLE
+     */
     DOUBLE("double", 4),
-	/**
-	 *TEXT
-	 */
+    /**
+     * TEXT
+     */
     TEXT("text", 5),
-	/**
-	 *DATE
-	 */
+    /**
+     * DATE
+     */
     DATE("date", 6),
 
     /**
@@ -54,15 +54,15 @@ public enum DTypeEnum {
      * BOOLEAN
      */
     BOOLEAN("boolean", 8);
-	
-	private static String[] OBJTYPES = new String[]{
-			Short.class.getName(), 
-			Long.class.getName(),
-			Float.class.getName(),
-			Double.class.getName(),
-			String.class.getName(),
-			Date.class.getName()};
-    private final String name;
+
+    private static String[] OBJTYPES = new String[]{
+            Short.class.getName(),
+            Long.class.getName(),
+            Float.class.getName(),
+            Double.class.getName(),
+            String.class.getName(),
+            Date.class.getName()};
+    private final  String   name;
 
     private int value;
 
@@ -70,41 +70,42 @@ public enum DTypeEnum {
         this.name = name;
         this.value = value;
     }
-    
+
     public static Object getObjType(int value) {
-    	String clazz = OBJTYPES[value-1];
-    	try {
-			return Class.forName(clazz);
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-			return null;
-		}
+        String clazz = OBJTYPES[value - 1];
+        try {
+            return Class.forName(clazz);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
-    
+
     public static List<Map<String, Object>> enumList() {
-    	List<Map<String, Object>> list = new ArrayList<>();
-    	for(DTypeEnum dtypeEnum : DTypeEnum.values()){
-    		Map<String, Object> map = new HashMap<>();
-    		map.put("name", dtypeEnum.getName());
-    		map.put("value", dtypeEnum.getValue());
-    		list.add(map);
-    	}
-    	return list;
+        List<Map<String, Object>> list = new ArrayList<>();
+        for (DTypeEnum dtypeEnum : DTypeEnum.values()) {
+            Map<String, Object> map = new HashMap<>();
+            map.put("name", dtypeEnum.getName());
+            map.put("value", dtypeEnum.getValue());
+            list.add(map);
+        }
+        return list;
     }
-    
+
     /**
      * 根据value获取枚举对象
+     *
      * @param value
      * @return
      */
     @JsonCreator
-    public static DTypeEnum getEnum(int value){
-    	for(DTypeEnum dtypeEnum : DTypeEnum.values()){
-    		if(dtypeEnum.getValue() == value){
-    			return dtypeEnum;
-    		}
-    	}
-    	return null;
+    public static DTypeEnum getEnum(int value) {
+        for (DTypeEnum dtypeEnum : DTypeEnum.values()) {
+            if (dtypeEnum.getValue() == value) {
+                return dtypeEnum;
+            }
+        }
+        return null;
     }
 
     public String getName() {

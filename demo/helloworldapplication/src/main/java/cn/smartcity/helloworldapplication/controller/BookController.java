@@ -19,14 +19,14 @@ public class BookController {
     private List<Book> books = new ArrayList<>();
 
     @PostMapping("/book")
-    public ResponseEntity<List<Book>> addBook(@RequestBody  Book book){
+    public ResponseEntity<List<Book>> addBook(@RequestBody Book book) {
         books.add(book);
         return ResponseEntity.ok(books);
     }
 
     @DeleteMapping("/book/{id}")
     public ResponseEntity deleteBookById(@PathVariable("id") int id) throws Exception {
-        if (id > books.size()){
+        if (id > books.size()) {
             throw new Exception("没有改id");
         }
         books.remove(id);
@@ -35,8 +35,8 @@ public class BookController {
 
 
     @GetMapping("/book")
-    public ResponseEntity getBookByName(@RequestParam("name") String name){
-        List<Book> results =books.stream().filter(book -> book.getName().equals(name)).collect(Collectors.toList());
+    public ResponseEntity getBookByName(@RequestParam("name") String name) {
+        List<Book> results = books.stream().filter(book -> book.getName().equals(name)).collect(Collectors.toList());
         return ResponseEntity.ok(results);
     }
 }

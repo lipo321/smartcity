@@ -12,81 +12,81 @@ import cn.smartcity.relationtran.oldModel.dict.ConnectorEnum;
  */
 public class Connector extends AObject {
 
-	/**
-	 * 连接类型
-	 */
-	private ConnectorEnum type = ConnectorEnum.Relation;
+    /**
+     * 连接类型
+     */
+    private ConnectorEnum type = ConnectorEnum.Relation;
 
-	/**
-	 * 关系
-	 */
-	private Relation relation;
+    /**
+     * 关系
+     */
+    private Relation relation;
 
-	/**
-	 * 用户
-	 */
-	private User user;
+    /**
+     * 用户
+     */
+    private User user;
 
-	/**
-	 * 目标类模板
-	 */
-	private OType dType;
-	
-	/**
-	 * 源类模板Id
-	 * connector添加关系时 作为唯一标识使用
-	 */
-	private Long fId;
-	
-	/**
-	 * @roseuid 59EF1E2C006B
-	 */
-	public Connector() {
+    /**
+     * 目标类模板
+     */
+    private OType dType;
 
-	}
+    /**
+     * 源类模板Id
+     * connector添加关系时 作为唯一标识使用
+     */
+    private Long fId;
 
-	public Connector(long id) {
-		this.setId(id);
-	}
+    /**
+     * @roseuid 59EF1E2C006B
+     */
+    public Connector() {
 
-	public ConnectorEnum getType() {
-		return type;
-	}
+    }
 
-	public void setType(ConnectorEnum type) {
-		this.type = type;
-	}
+    public Connector(long id) {
+        this.setId(id);
+    }
 
-	public Relation getRelation() {
-		return relation;
-	}
+    public ConnectorEnum getType() {
+        return type;
+    }
 
-	public void setRelation(Relation relation) {
-		this.relation = relation;
-	}
+    public void setType(ConnectorEnum type) {
+        this.type = type;
+    }
 
-	public User getUser() {
-		return user;
-	}
+    public Relation getRelation() {
+        return relation;
+    }
 
-	public void setUser(User user) {
-		this.user = user;
-	}
+    public void setRelation(Relation relation) {
+        this.relation = relation;
+    }
 
-	public OType getdType() {
-		return dType;
-	}
+    public User getUser() {
+        return user;
+    }
 
-	public void setdType(OType dType) {
-		this.dType = dType;
-	}
+    public void setUser(User user) {
+        this.user = user;
+    }
 
-	public Long getfId() {
-		return fId;
-	}
+    public OType getdType() {
+        return dType;
+    }
 
-	public void setfId(Long fId) {
-		this.fId = fId;
-	}
+    public void setdType(OType dType) {
+        this.dType = dType;
+    }
+
+    public Long getfId() {
+        return fId;
+    }
+
+    public void setfId(Long fId) {
+        this.fId = fId;
+    }
 
 }

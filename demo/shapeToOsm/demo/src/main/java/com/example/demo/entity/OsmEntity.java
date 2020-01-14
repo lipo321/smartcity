@@ -16,8 +16,8 @@ import java.io.Serializable;
 @Setter
 public class OsmEntity implements Serializable {
 
-    private static final long serialVersionUID = -1662444565087894515L;
-    private GeomType type;
+    private static final long     serialVersionUID = -1662444565087894515L;
+    private              GeomType type;
 
     private Long id;
 

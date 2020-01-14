@@ -14,32 +14,32 @@ import java.util.List;
  * @des 由于时间问题就不做相关的非空判断啦
  */
 public class StructNetwork {
-    public GxNetwork getNetwork(List<SObject> sObjects){
-       GxNetwork network = new GxNetwork();
+    public GxNetwork getNetwork(List<SObject> sObjects) {
+        GxNetwork network = new GxNetwork();
         //1.姑且认为sobject属于一个时空域
-        if (sObjects.size() != 0&& sObjects != null){
+        if (sObjects.size() != 0 && sObjects != null) {
             network.setPrjId(sObjects.get(0).getSdomainId());
         }
         //2.组织关系网
         List<GxVersion> versions = new ArrayList<>();
-       for (SObject object:sObjects){
-           //2.1获取该对象下所有关系
-           List<RNode> nodes = object.getNetwork().getNodes();
-           for (RNode node:nodes){
-               GxVersion gxVersion = new GxVersion();
-               structVersion(gxVersion,node,object);
-               versions.add(gxVersion);
-           }
-       }
-       network.setVersions(versions);
+        for (SObject object : sObjects) {
+            //2.1获取该对象下所有关系
+            List<RNode> nodes = object.getNetwork().getNodes();
+            for (RNode node : nodes) {
+                GxVersion gxVersion = new GxVersion();
+                structVersion(gxVersion, node, object);
+                versions.add(gxVersion);
+            }
+        }
+        network.setVersions(versions);
 
-       return network;
+        return network;
     }
 
-    private void structVersion(GxVersion gxVersion,RNode node,SObject object){
+    private void structVersion(GxVersion gxVersion, RNode node, SObject object) {
         //1.组织开始节点
         GxNode from = new GxNode();
-        structFromNode(from,object);
+        structFromNode(from, object);
         gxVersion.setFrom(from);
 
         //2.组织结束节点,工程id先不设置一样的
@@ -70,7 +70,7 @@ public class StructNetwork {
         //例如：3、对象的消亡，是怎么处理关系，删除还是将消亡时间赋给跟该对象有关系的所有关系的断开时间
         gxEdge.setState(EGxRelationState.KEEP.getCode());
         //3.3.3 设置关系强度
-        gxEdge.setIntensity((double)node.getEdge().getIntensity());
+        gxEdge.setIntensity((double) node.getEdge().getIntensity());
         //3.3.4 设置关系规则
         //node.getEdge().getRules();
 
@@ -83,7 +83,7 @@ public class StructNetwork {
         gxVersion.setRelations(gxEdgeHistories);
     }
 
-    private void structFromNode(GxNode from,SObject object){
+    private void structFromNode(GxNode from, SObject object) {
         //1.1开始节点id
         from.setOid(object.getId());
         //1.2开始节点工程id

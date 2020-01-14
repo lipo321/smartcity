@@ -13,17 +13,16 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class HelloController {
     @GetMapping("/hello")
-    public String greeting(@RequestParam(name = "name",required = false,defaultValue = "World")
-                                       String name, Model model){
-        model.addAttribute("name",name);
+    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World")
+                                   String name, Model model) {
+        model.addAttribute("name", name);
         return "hello";
     }
 
 
-
     @PostMapping("/helloPerson")
     @ResponseBody
-    public Person greeting(@RequestBody Person person){
+    public Person greeting(@RequestBody Person person) {
         return person;
     }
 

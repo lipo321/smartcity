@@ -14,11 +14,11 @@ public class GxEdgeHistory {
     /**
      * 关系id
      */
-    private Long rid;
+    private Long   rid;
     /**
      * 关系类id
      */
-    private Long typeId;
+    private Long   typeId;
     /**
      * 关系类名称
      */

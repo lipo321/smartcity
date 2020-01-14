@@ -6,24 +6,24 @@ package cn.smartcity.helloworldapplication.exception;
  * @Version 0.1
  * @des 自定义异常类型
  */
-public class ResourceNotFoundException extends RuntimeException  {
+public class ResourceNotFoundException extends RuntimeException {
     private String message;
 
-    public ResourceNotFoundException(){
+    public ResourceNotFoundException() {
         super();
     }
 
-    public ResourceNotFoundException(String message){
+    public ResourceNotFoundException(String message) {
         super(message);
         this.message = message;
     }
 
     @Override
-    public String getMessage(){
+    public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message){
+    public void setMessage(String message) {
         this.message = message;
     }
 }

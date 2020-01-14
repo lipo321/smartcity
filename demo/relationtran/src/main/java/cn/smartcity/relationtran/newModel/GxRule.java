@@ -11,11 +11,15 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * @date created on 15:55 2019/10/30
  */
 public class GxRule {
-    /** 图数据库主键 */
+    /**
+     * 图数据库主键
+     */
     @JsonIgnore
     private Long rid;
 
-    /** relation的hash主键 */
+    /**
+     * relation的hash主键
+     */
     @JsonIgnore
     private Long hashId;
 

@@ -18,8 +18,8 @@ import java.util.List;
  */
 public class ShapeToOsmObjectUtils {
 
-    private static final int PRECISION = (int) 1e10;
-    static HashMap<String, Long> coordinatesHash;
+    private static final int                   PRECISION = (int) 1e10;
+    static               HashMap<String, Long> coordinatesHash;
 
     /**
      * 将坐标点转换成hash表的key值

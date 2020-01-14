@@ -16,15 +16,15 @@ public class GxNode {
     /**
      * 对象id
      */
-    private Long oid;
+    private Long   oid;
     /**
      * 工程id
      */
-    private Long prjId;
+    private Long   prjId;
     /**
      * 对象类id
      */
-    private Long clsId;
+    private Long   clsId;
     /**
      * 对象类名称
      */
@@ -83,7 +83,7 @@ public class GxNode {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()){
+        if (o == null || getClass() != o.getClass()) {
             return false;
         }
         GxNode gxNode = (GxNode) o;

@@ -8,11 +8,11 @@ import java.util.List;
  * @Version 0.1
  */
 public class SObject {
-    private long id;
+    private long    id;
     private Network network;
-    private Long realtime;
-    private OType oType;
-    private Long sdomainId;
+    private Long    realtime;
+    private OType   oType;
+    private Long    sdomainId;
 
 
     public long getId() {

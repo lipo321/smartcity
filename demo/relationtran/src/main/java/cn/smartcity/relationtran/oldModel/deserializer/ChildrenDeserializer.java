@@ -20,17 +20,17 @@ public class ChildrenDeserializer extends JsonDeserializer<List<AObject>> {
 
     @Override
     public List<AObject> deserialize(JsonParser parser, DeserializationContext deserializationContext) throws IOException {
-        List<AObject> result  = new ArrayList<>();
+        List<AObject> result = new ArrayList<>();
         List<Map<String, Object>> dataList = DeserializerHelper.deserializer(parser);
         for (Map<String, Object> map : dataList) {
-        	OBase obase = new OBase();
-    		ArrayList<Action> actions = new ArrayList<>();
-    		Action action = new Action();
-    		action.setOperation(Integer.valueOf(Action.ADDING));
-    		actions.add(action);
-    		obase.setActions(actions);
-    		obase.setId(Long.parseLong(map.get("id").toString()));		
-    		result.add(obase);
+            OBase obase = new OBase();
+            ArrayList<Action> actions = new ArrayList<>();
+            Action action = new Action();
+            action.setOperation(Integer.valueOf(Action.ADDING));
+            actions.add(action);
+            obase.setActions(actions);
+            obase.setId(Long.parseLong(map.get("id").toString()));
+            result.add(obase);
         }
         return result;
     }

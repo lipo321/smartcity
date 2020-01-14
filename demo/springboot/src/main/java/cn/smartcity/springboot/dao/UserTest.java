@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "use")
 @Component
 public class UserTest {
-    private String name;
+    private String  name;
     private Integer age;
 
     public String getName() {

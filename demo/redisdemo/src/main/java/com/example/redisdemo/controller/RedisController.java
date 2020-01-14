@@ -24,24 +24,25 @@ public class RedisController {
     private RedisUtil redisUtil;
 
     @GetMapping("/hello")
-    public String hello(){
-        return  "hello";
+    public String hello() {
+        return "hello";
     }
-    @GetMapping("/set")
-    public boolean redisSet(String key,String value){
-        UserEntity userEntity = new UserEntity();
-      //  userEntity.setId(Long.valueOf(1));
-   //     userEntity.setGuid(String.valueOf(1));
-//        userEntity.setName(new  String("zhangsan"));
-  //      userEntity.setAge(String.valueOf(20));
-       // userEntity.setCreateTime(new Date());
 
-        return redisUtil.set(key, value,ExpireTime);
+    @GetMapping("/set")
+    public boolean redisSet(String key, String value) {
+        UserEntity userEntity = new UserEntity();
+        //  userEntity.setId(Long.valueOf(1));
+        //     userEntity.setGuid(String.valueOf(1));
+//        userEntity.setName(new  String("zhangsan"));
+        //      userEntity.setAge(String.valueOf(20));
+        // userEntity.setCreateTime(new Date());
+
+        return redisUtil.set(key, value, ExpireTime);
 
     }
 
     @GetMapping("/get")
-    public Object redisGet(String key){
+    public Object redisGet(String key) {
         return redisUtil.get(key);
     }
 

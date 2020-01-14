@@ -2,6 +2,7 @@ package com.example.demo.tools;
 
 import onegis.common.utils.IdMakerUtils;
 import onegis.dcm.DistributedIDManager;
+
 /**
  * @author lipo@126.com
  * @date 2019年7月10日
